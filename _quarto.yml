@@ -1,0 +1,31 @@
+project:
+  type: book
+  output-dir: docs
+  render:
+    - "*.qmd"
+
+book:
+  title: "3rdSPDM"
+  author: "JEBV"
+  date: "04/11/2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: united
+      dark: slate
+    css: style.css
+    toc: true
+    toc-title: Contenido
+  pdf:
+    documentclass: scrreprt
+
+
+
