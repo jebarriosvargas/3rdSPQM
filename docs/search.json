@@ -128,5 +128,15 @@
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Modelo de Haldane</span>"
     ]
+  },
+  {
+    "objectID": "1_basics.html#red-recíproca-y-primera-zona-de-brillouin",
+    "href": "1_basics.html#red-recíproca-y-primera-zona-de-brillouin",
+    "title": "1  Estructura cristalina (cristal)",
+    "section": "1.3 Red recíproca y primera zona de Brillouin",
+    "text": "1.3 Red recíproca y primera zona de Brillouin\n\n\n\n\n\n\nNoteRed recíproca\n\n\n\n\n\nUn punto de la red recíproca \\(\\vec{G}\\) cumple que \\(e^{{\\rm i} \\vec{G}\\cdot \\vec{R}}=1\\) donde \\(\\vec{R}\\) son los puntos de la red real.\n\n\n\nNotamos que los puntos \\(\\vec{G}\\) que cumplen la definición tienen dimensiones de \\[\n[\\vec{G}] = \\frac{1}{\\text{longitud}}\\,,\n\\] es decir las dimensiones recíprocas de la red \\(\\vec{R}\\), \\[\n[\\vec{R}]= \\text{longitud}\\,.\n\\]\nCon el fin de determinar los puntos de la red recíproca, \\(\\vec{G}\\) consideramos las siguientes dos suposiciones\n\nLos puntos \\(\\{ \\vec{G} \\}\\) forman una red, entonces podemos escribirlos como una combinación lineal de coeficientes enteros de vectores linealmente independientes.\n\n\\[\n\\vec{G}=m_1\\vec{b}_1+m_2\\vec{b}_2\n\\]\n\nLos vectores base de la red recíproca cumplen que\n\n\\[\n\\vec{a}_i\\cdot \\vec{b}_j = 2\\pi \\delta_{ij}\n\\] donde \\(\\vec{a}_i\\) son los vectores base de la red \\(\\{\\vec{R}\\}\\).\nIdentificamos que podemos escribir la relación previa de forma ordenada como matriz\n\\[\n\\left[\n\\begin{array}{cc}\n\\vec{a}_1\\cdot \\vec{b}_1 & \\vec{a}_1\\cdot \\vec{b}_2  \\\\\n\\vec{a}_2\\cdot \\vec{b}_1 & \\vec{a}_2\\cdot \\vec{b}_2\n\\end{array}\n\\right]=\\left[\n\\begin{array}{cc}\n2\\pi & 0 \\\\\n0 & 2\\pi \\\\  \n\\end{array}\n\\right]\n\\] El lado izquierdo podemos escribirlo como el producto de dos matrices\n\\[\n\\left[\n\\begin{array}{c}\n\\qquad \\vec{a}_1 \\qquad \\\\\n------\\\\\n\\qquad \\vec{a}_2 \\qquad \\\\\n\\end{array}\n\\right]\\left[\n\\begin{array}{cc}\n&|\\\\\n\\vec{b}_1&|&\\vec{b}_2\\\\\n&|\n\\end{array}\n\\right]=\\left[\n\\begin{array}{cc}\n2\\pi & 0 \\\\\n0 & 2\\pi\n\\end{array}\n\\right]\n\\] Definimos las matrices \\[\nA\\equiv \\left[\n\\begin{array}{c}\n\\qquad \\vec{a}_1 \\qquad \\\\\n------\\\\\n\\qquad \\vec{a}_2 \\qquad\n\\end{array}\n\\right]\n\\] y \\[\nB\\equiv \\left[\n\\begin{array}{cc}\n&|\\\\\n\\vec{b}_1&|&\\vec{b}_2\\\\\n&|\n\\end{array}\n\\right]\n\\] Por lo que,\n\\[\nAB = 2\\pi \\mathbb{I}\n\\] donde \\(\\mathbb{I}\\) es la matriz identidad.\nPor lo que, para determinar los vectores de la red recíproca,\n\\[\nB = 2\\pi A^{-1}\n\\]\n\n\n\nRed recíproca",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Estructura cristalina (cristal)</span>"
+    ]
   }
 ]
