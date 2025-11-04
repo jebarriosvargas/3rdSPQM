@@ -1,0 +1,109 @@
+# Aproximación de amarre fuerte
+
+Las expresiones a continuación son un resumen de la sección *2.2 Tight-Binding Model Hamiltonians* de la referencia @Vanderbilt_2018.
+
+## Sistema finito 
+
+El Hamiltoniano de un conjunto de átomos es,
+
+\begin{align}
+H = T_{\rm e} + T_{\rm n} + V_{\rm e-e} + V_{\rm n-e} + V_{\rm n-n}
+\end{align}
+
+
+Aproximación de Born-Oppenheimer,
+
+
+\begin{align}
+H_{\rm elec} = T_{\rm e} + V_{\rm n-e} + V_{\rm e-e} 
+\end{align}
+
+
+Típicamente se define, 
+
+\begin{align}
+V_{\rm ext} = \sum_{\rm I} \frac{1}{4\pi\epsilon_0}\frac{e^2 Z_I}{|\vec{r}-\vec{R}_I|}
+\end{align}
+
+Con la cual se escribe,
+
+\begin{align}
+H_{\rm elec} = \sum_{i} \bigg[ \frac{p_i^2}{2m} + V_{\rm ext}(\vec{r}_i) \bigg] + \frac{1}{2}\sum_{ij} \frac{1}{4\pi\epsilon_0}\frac{e^2}{|\vec{r}_i-\vec{r}_j|}
+\end{align}
+
+Esta ecuación es imposible de resolver cuando el número de electrones es muy grande. La primera aproximación fuerte es que consideraremos $V_{\rm e-e}$ despreciable. 
+
+*Corazón:* Simplificaremos el problema con el fin de proveer un entendimiento de la física y química del cristal.
+
+Frecuentemente, elegimos una base de orbitales tipo atómicos $\varphi_j$ localizados en los diferentes sitios $j$. Podemos escribir nuestro eigenestado de prueba de la forma  
+
+
+\begin{align}
+\psi_n(\vec{r}) = \sum_j C_{nj}\varphi_j(\vec{r}-\vec{r}_j)
+\end{align}
+
+
+donde los coeficientes de la expansión $C_{nj}$ del $n$-ésimo eigenestado del orbital $j$-ésimo están por determinarse. Por tanto, las soluciones se encuentran resolviendo la ecuación matricial, 
+
+\begin{align}
+\big( \mathbf{H} - E_n \mathbf{S}) \mathbf{C}_n = 0
+\end{align}
+
+donde $\mathbf{H}$ y $\mathbf{S}$ son matrices,
+
+
+\begin{align}
+H_{ij} &= \langle \varphi_i| H_{\rm elec} |\varphi_j\rangle \\
+S_{ij} &= \langle \varphi_i| \varphi_j\rangle
+\end{align}
+
+
+$\mathbf{C}_n$ es un vector columna de coeficientes $C_{nj}$.
+
+$H_{ii}$: **energías de sitio (on-site)** (elementos en la diagonal)
+
+$H_{ij}$: **elementos de salto (hopping)** (fuera de la diagonal)
+
+$S_{ij}$: **matriz de traslape** 
+
+Otra aproximación cuestionable, $S_{ij}$ es aproximadamente diagonal.
+
+\begin{align}
+S_{ij} &= \langle \varphi_i| \varphi_j\rangle \approx \delta_{i,j}
+\end{align}
+
+es decir los orbitales atómicos localizados en sitios diferentes son una base ortonormal.
+
+## Sistema extendido (cristal)
+
+En los sistemas extendidos los orbitales base tienen una etiqueta más que corresponde al punto de red de la celda unitaria donde se encuentran dichos orbitales,
+
+\begin{align}
+\phi_{\vec{R},j} = \phi_j(\vec{r}-\vec{R}-\tau_j)
+\end{align}
+
+donde $\tau_j$ es la posición del orbital relativa al vector de red $\vec{R}$. Supondrems de entrada la ortonormalidad,
+
+\begin{align}
+\langle \phi_{\vec{R},i} | \phi_{\vec{R}',j} \rangle =\delta_{\vec{R},\vec{R}'}\delta_{i,j}
+\end{align}
+
+Los elemntos de matriz del Hamiltoniano están dados por,
+
+\begin{align}
+\langle \phi_{\vec{R},i} | H_{\rm elec} |\phi_{\vec{R}',j} \rangle = \int d\vec{r} \bigg( \phi_{\vec{R},i}^*(\vec{r}) H_{\rm elec} \phi_{\vec{R}',j}(\vec{r}) \bigg)
+\end{align}
+
+Introducimos la base tipo Bloch y calculamos los elementos de matriz,
+
+### Convención I
+
+\begin{align}
+|\chi_j^\vec{k}\rangle = \sum_{\vec{R}} e^{{\rm i} \vec{k}\cdot (\vec{R}+\tau_j)}|\phi_{\vec{R},j}\rangle
+\end{align}
+
+Utilizando la ortogonalidad por celda,
+
+\begin{align}
+\langle \chi_j^\vec{k} | \chi_j^\vec{k} \rangle 
+\end{align}

@@ -1,13 +1,11 @@
-# Conceptos básicos
-
-## Estructura cristalina (cristal)
+# Estructura cristalina (cristal)
 
 :::{.justify}
 Estaremos interesados en arreglos de átomos con simetría traslacional que llamaremos estructuras periódicas o estructuras cristalinas (de forma breve también los llamaremos cristales). Las estructuras periódicas se caracterizan por la combinación de una red y un decorado.
 :::
 
 ::: {.callout-note appearance="simple" icon=false collapse="false"}
-### Red (definición)
+## Red (definición)
 
 Una red es el conjunto infinito de puntos definidos por la suma con coeficientes enteros de un conjunto de vectores de red linealmente independientes (a lo largo del curso pensaremos en ejemplos en dos dimension).
 
@@ -22,7 +20,7 @@ En el curso consideraremos únicamente ejemplos en dos dimensiones sólo por cue
 :::
 :::
 
-## En 2D
+## Red en 2D
 
 ```{python}
 #| label: fig-red2d
@@ -142,7 +140,6 @@ GraficadeRedCell(vec_a1,vec_a2,polyx,polyy)
 ## Construcción de Wigner-Seitz
 :::{.justify}
 En 2D, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza su mediatriz (una línea perpendicular al segmento que pase por el punto medio). El área más pequeña encerrada por las mediatrices es la celda primitiva de Wigner-Seitz.
-En 3D, también, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza un plano perpendicular a cada segmento que pase por el punto medio. El volumen más pequeño encerrado por los planos es la celda primitiva de Wigner-Seitz.
 :::
 :::
 
@@ -213,7 +210,7 @@ GraficadeRedCell(vec_a1,vec_a2,WignerSeitz[0],WignerSeitz[1])
 ```
 
 
-# Decorado (Motif)
+## Decorado (Motif)
 
 ::: {.callout-note appearance="simple" icon=false collapse="false"}
 ## Decorado (definición)
@@ -291,5 +288,3 @@ fig.show()
 
 ```
 
-
-Ver @Vanderbilt_2018 como referencia.

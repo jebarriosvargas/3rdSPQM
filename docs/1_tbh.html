@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Grafeno – 3rdSPDM</title>
+<title>2&nbsp; Aproximación de amarre fuerte – 3rdSPDM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,42 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -65,7 +50,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./3_haldane.html" rel="next">
+<link href="./2_grafeno.html" rel="next">
 <link href="./1_basics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -110,6 +95,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -285,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_grafeno.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grafeno</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_tbh.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aproximación de amarre fuerte</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -324,19 +338,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./1_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estructura cristalina (cristal)</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_grafeno.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grafeno</span></span></a>
+  <a href="./1_tbh.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aproximación de amarre fuerte</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_grafeno.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Grafeno</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./3_haldane.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -355,7 +375,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
-  <li><a href="#supercelda-de-grafeno" id="toc-supercelda-de-grafeno" class="nav-link active" data-scroll-target="#supercelda-de-grafeno"><span class="header-section-number">2.1</span> Supercelda de grafeno</a></li>
+  <li><a href="#sistema-finito" id="toc-sistema-finito" class="nav-link active" data-scroll-target="#sistema-finito"><span class="header-section-number">2.1</span> Sistema finito</a></li>
+  <li><a href="#sistema-extendido-cristal" id="toc-sistema-extendido-cristal" class="nav-link" data-scroll-target="#sistema-extendido-cristal"><span class="header-section-number">2.2</span> Sistema extendido (cristal)</a>
+  <ul class="collapse">
+  <li><a href="#convención-i" id="toc-convención-i" class="nav-link" data-scroll-target="#convención-i"><span class="header-section-number">2.2.1</span> Convención I</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -365,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grafeno</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aproximación de amarre fuerte</span></h1>
 </div>
 
 
@@ -382,73 +406,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-fig-grafeno-pythtb" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Mostrar código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> pythtb <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a>lattice <span class="op">=</span> [ [<span class="fl">1.0</span>, <span class="fl">0.0</span>],    [<span class="fl">1.</span><span class="op">/</span><span class="fl">2.</span>, sqrt(<span class="fl">3.0</span>)<span class="op">/</span><span class="fl">2.0</span>] ]  <span class="co"># Lattice vectors and </span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>orbital <span class="op">=</span> [ [<span class="dv">1</span><span class="op">/</span><span class="fl">3.</span>, <span class="fl">1.</span><span class="op">/</span><span class="fl">3.</span>], [<span class="fl">2.</span><span class="op">/</span><span class="fl">3.</span>, <span class="fl">2.</span><span class="op">/</span><span class="fl">3.</span>] ]          <span class="co"># Orbital positions</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>graphene <span class="op">=</span> tb_model(<span class="dv">2</span>, <span class="dv">2</span>, lattice, orbital)          <span class="co"># Two-dimensional TBH</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>graphene.set_hop(<span class="op">-</span><span class="fl">1.0</span>, <span class="dv">0</span>, <span class="dv">1</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb1-8"><a href="#cb1-8"></a>graphene.set_hop(<span class="op">-</span><span class="fl">1.0</span>, <span class="dv">1</span>, <span class="dv">0</span>, [ <span class="dv">1</span>, <span class="dv">0</span>])   <span class="co"># Define hopping between orbitals</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>graphene.set_hop(<span class="op">-</span><span class="fl">1.0</span>, <span class="dv">1</span>, <span class="dv">0</span>, [ <span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>kpoints <span class="op">=</span> [ [<span class="fl">0.0</span>, <span class="fl">0.0</span>], [<span class="fl">1.</span><span class="op">/</span><span class="fl">3.</span>, <span class="fl">2.</span><span class="op">/</span><span class="fl">3.</span>], [<span class="fl">0.5</span>, <span class="fl">0.5</span>] ] <span class="co"># Path in k-space</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>klabels <span class="op">=</span> [ <span class="vs">r"</span><span class="dv">$\G</span><span class="vs">amma</span><span class="dv">$</span><span class="vs">"</span>,     <span class="vs">r"</span><span class="dv">$</span><span class="vs">K</span><span class="dv">$</span><span class="vs">"</span>,         <span class="vs">r"</span><span class="dv">$</span><span class="vs">M</span><span class="dv">$</span><span class="vs">"</span>     ]</span>
-<span id="cb1-13"><a href="#cb1-13"></a>(k_vec,k_dist,k_node) <span class="op">=</span> graphene.k_path(kpoints, <span class="dv">100</span>,report<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-14"><a href="#cb1-14"></a>evals   <span class="op">=</span> graphene.solve_all(k_vec) <span class="co"># Solve model on k-path</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))            <span class="co"># Plot bandstructure</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>ax.plot(k_dist, evals[<span class="dv">0</span>,:], c<span class="op">=</span><span class="st">'k'</span>) </span>
-<span id="cb1-17"><a href="#cb1-17"></a>ax.plot(k_dist, evals[<span class="dv">1</span>,:], c<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb1-18"><a href="#cb1-18"></a>ax.set_xticks(k_node)</span>
-<span id="cb1-19"><a href="#cb1-19"></a>ax.set_xticklabels(klabels)</span>
-<span id="cb1-20"><a href="#cb1-20"></a>ax.set_xlim(k_node[<span class="dv">0</span>],k_node[<span class="op">-</span><span class="dv">1</span>])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div id="fig-grafeno-pythtb" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grafeno-pythtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="2_grafeno_files/figure-html/fig-grafeno-pythtb-output-1.png" width="352" height="337" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-pythtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Ejemplo de estructura de bandas del grafeno (aproximación de amarre fuerte)
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<section id="supercelda-de-grafeno" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="supercelda-de-grafeno"><span class="header-section-number">2.1</span> Supercelda de grafeno</h2>
-<div id="cell-fig-grafeno-supercell" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Mostrar código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Graphene supercell (4 atoms)</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>graphene_sc <span class="op">=</span> graphene.make_supercell([[<span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>]])</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>(fig,ax) <span class="op">=</span> graphene_sc.visualize(<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>ax.set_title(<span class="st">"Graphene (supercell)"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div id="fig-grafeno-supercell" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="2_grafeno_files/figure-html/fig-grafeno-supercell-output-1.png" width="660" height="660" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Supercelda de grafeno
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
+<p>Las expresiones a continuación son un resumen de la sección <em>2.2 Tight-Binding Model Hamiltonians</em> de la referencia <span class="citation" data-cites="Vanderbilt_2018">Vanderbilt (<a href="references.html#ref-Vanderbilt_2018" role="doc-biblioref">2018</a>)</span>.</p>
+<section id="sistema-finito" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sistema-finito"><span class="header-section-number">2.1</span> Sistema finito</h2>
+<p>El Hamiltoniano de un conjunto de átomos es,</p>
+<p><span class="math display">\[\begin{align}
+H = T_{\rm e} + T_{\rm n} + V_{\rm e-e} + V_{\rm n-e} + V_{\rm n-n}
+\end{align}\]</span></p>
+<p>Aproximación de Born-Oppenheimer,</p>
+<p><span class="math display">\[\begin{align}
+H_{\rm elec} = T_{\rm e} + V_{\rm n-e} + V_{\rm e-e}
+\end{align}\]</span></p>
+<p>Típicamente se define,</p>
+<p><span class="math display">\[\begin{align}
+V_{\rm ext} = \sum_{\rm I} \frac{1}{4\pi\epsilon_0}\frac{e^2 Z_I}{|\vec{r}-\vec{R}_I|}
+\end{align}\]</span></p>
+<p>Con la cual se escribe,</p>
+<p><span class="math display">\[\begin{align}
+H_{\rm elec} = \sum_{i} \bigg[ \frac{p_i^2}{2m} + V_{\rm ext}(\vec{r}_i) \bigg] + \frac{1}{2}\sum_{ij} \frac{1}{4\pi\epsilon_0}\frac{e^2}{|\vec{r}_i-\vec{r}_j|}
+\end{align}\]</span></p>
+<p>Esta ecuación es imposible de resolver cuando el número de electrones es muy grande. La primera aproximación fuerte es que consideraremos <span class="math inline">\(V_{\rm e-e}\)</span> despreciable.</p>
+<p><em>Corazón:</em> Simplificaremos el problema con el fin de proveer un entendimiento de la física y química del cristal.</p>
+<p>Frecuentemente, elegimos una base de orbitales tipo atómicos <span class="math inline">\(\varphi_j\)</span> localizados en los diferentes sitios <span class="math inline">\(j\)</span>. Podemos escribir nuestro eigenestado de prueba de la forma</p>
+<p><span class="math display">\[\begin{align}
+\psi_n(\vec{r}) = \sum_j C_{nj}\varphi_j(\vec{r}-\vec{r}_j)
+\end{align}\]</span></p>
+<p>donde los coeficientes de la expansión <span class="math inline">\(C_{nj}\)</span> del <span class="math inline">\(n\)</span>-ésimo eigenestado del orbital <span class="math inline">\(j\)</span>-ésimo están por determinarse. Por tanto, las soluciones se encuentran resolviendo la ecuación matricial,</p>
+<p><span class="math display">\[\begin{align}
+\big( \mathbf{H} - E_n \mathbf{S}) \mathbf{C}_n = 0
+\end{align}\]</span></p>
+<p>donde <span class="math inline">\(\mathbf{H}\)</span> y <span class="math inline">\(\mathbf{S}\)</span> son matrices,</p>
+<p><span class="math display">\[\begin{align}
+H_{ij} &amp;= \langle \varphi_i| H_{\rm elec} |\varphi_j\rangle \\
+S_{ij} &amp;= \langle \varphi_i| \varphi_j\rangle
+\end{align}\]</span></p>
+<p><span class="math inline">\(\mathbf{C}_n\)</span> es un vector columna de coeficientes <span class="math inline">\(C_{nj}\)</span>.</p>
+<p><span class="math inline">\(H_{ii}\)</span>: <strong>energías de sitio (on-site)</strong> (elementos en la diagonal)</p>
+<p><span class="math inline">\(H_{ij}\)</span>: <strong>elementos de salto (hopping)</strong> (fuera de la diagonal)</p>
+<p><span class="math inline">\(S_{ij}\)</span>: <strong>matriz de traslape</strong></p>
+<p>Otra aproximación cuestionable, <span class="math inline">\(S_{ij}\)</span> es aproximadamente diagonal.</p>
+<p><span class="math display">\[\begin{align}
+S_{ij} &amp;= \langle \varphi_i| \varphi_j\rangle \approx \delta_{i,j}
+\end{align}\]</span></p>
+<p>es decir los orbitales atómicos localizados en sitios diferentes son una base ortonormal.</p>
+</section>
+<section id="sistema-extendido-cristal" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sistema-extendido-cristal"><span class="header-section-number">2.2</span> Sistema extendido (cristal)</h2>
+<p>En los sistemas extendidos los orbitales base tienen una etiqueta más que corresponde al punto de red de la celda unitaria donde se encuentran dichos orbitales,</p>
+<p><span class="math display">\[\begin{align}
+\phi_{\vec{R},j} = \phi_j(\vec{r}-\vec{R}-\tau_j)
+\end{align}\]</span></p>
+<p>donde <span class="math inline">\(\tau_j\)</span> es la posición del orbital relativa al vector de red <span class="math inline">\(\vec{R}\)</span>. Supondrems de entrada la ortonormalidad,</p>
+<p><span class="math display">\[\begin{align}
+\langle \phi_{\vec{R},i} | \phi_{\vec{R}',j} \rangle =\delta_{\vec{R},\vec{R}'}\delta_{i,j}
+\end{align}\]</span></p>
+<p>Los elemntos de matriz del Hamiltoniano están dados por,</p>
+<p><span class="math display">\[\begin{align}
+\langle \phi_{\vec{R},i} | H_{\rm elec} |\phi_{\vec{R}',j} \rangle = \int d\vec{r} \bigg( \phi_{\vec{R},i}^*(\vec{r}) H_{\rm elec} \phi_{\vec{R}',j}(\vec{r}) \bigg)
+\end{align}\]</span></p>
+<p>Introducimos la base tipo Bloch y calculamos los elementos de matriz,</p>
+<section id="convención-i" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="convención-i"><span class="header-section-number">2.2.1</span> Convención I</h3>
+<p><span class="math display">\[\begin{align}
+|\chi_j^\vec{k}\rangle = \sum_{\vec{R}} e^{{\rm i} \vec{k}\cdot (\vec{R}+\tau_j)}|\phi_{\vec{R},j}\rangle
+\end{align}\]</span></p>
+<p>Utilizando la ortogonalidad por celda,</p>
+<p><span class="math display">\[\begin{align}
+\langle \chi_j^\vec{k} | \chi_j^\vec{k} \rangle
+\end{align}\]</span></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Vanderbilt_2018" class="csl-entry" role="listitem">
+Vanderbilt, David. 2018. <em>Berry Phases in Electronic Structure Theory: Electric Polarization, Orbital Magnetization and Topological Insulators</em>. Cambridge University Press.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -867,13 +900,13 @@ Figure&nbsp;2.2: Supercelda de grafeno
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./1_basics.html" class="pagination-link" aria-label="Conceptos básicos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos</span></span>
+      <a href="./1_basics.html" class="pagination-link" aria-label="Estructura cristalina (cristal)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estructura cristalina (cristal)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./3_haldane.html" class="pagination-link" aria-label="Modelo de Haldane">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./2_grafeno.html" class="pagination-link" aria-label="Grafeno">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Grafeno</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

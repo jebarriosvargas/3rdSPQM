@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Conceptos básicos – 3rdSPDM</title>
+<title>1&nbsp; Estructura cristalina (cristal) – 3rdSPDM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,27 +55,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -85,7 +65,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./2_grafeno.html" rel="next">
+<link href="./1_tbh.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -135,18 +115,8 @@ div.csl-indent {
 <script type="text/javascript">
 window.PlotlyConfig = {MathJaxConfig: 'local'};
 if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-if (typeof require !== 'undefined') {
-require.undef("plotly");
-requirejs.config({
-    paths: {
-        'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
-    }
-});
-require(['plotly'], function(Plotly) {
-    window._Plotly = Plotly;
-});
-}
 </script>
+<script type="module">import "https://cdn.plot.ly/plotly-3.0.1.min"</script>
 
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -353,7 +323,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_basics.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_basics.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estructura cristalina (cristal)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -386,25 +356,31 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prefacio</span></a>
+ <span class="menu-text">Comentarios generales</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./1_basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estructura cristalina (cristal)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_tbh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aproximación de amarre fuerte</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_grafeno.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grafeno</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Grafeno</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./3_haldane.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -423,9 +399,8 @@ window.Quarto = {
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
-  <li><a href="#estructura-cristalina-cristal" id="toc-estructura-cristalina-cristal" class="nav-link active" data-scroll-target="#estructura-cristalina-cristal"><span class="header-section-number">1.1</span> Estructura cristalina (cristal)</a></li>
-  <li><a href="#en-2d" id="toc-en-2d" class="nav-link" data-scroll-target="#en-2d"><span class="header-section-number">1.2</span> En 2D</a></li>
-  <li><a href="#decorado-motif" id="toc-decorado-motif" class="nav-link" data-scroll-target="#decorado-motif"><span class="header-section-number">2</span> Decorado (Motif)</a></li>
+  <li><a href="#red-en-2d" id="toc-red-en-2d" class="nav-link active" data-scroll-target="#red-en-2d"><span class="header-section-number">1.1</span> Red en 2D</a></li>
+  <li><a href="#decorado-motif" id="toc-decorado-motif" class="nav-link" data-scroll-target="#decorado-motif"><span class="header-section-number">1.2</span> Decorado (Motif)</a></li>
   </ul>
 </nav>
     </div>
@@ -435,7 +410,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estructura cristalina (cristal)</span></h1>
 </div>
 
 
@@ -452,8 +427,6 @@ window.Quarto = {
 </header>
 
 
-<section id="estructura-cristalina-cristal" class="level2 page-columns page-full" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="estructura-cristalina-cristal"><span class="header-section-number">1.1</span> Estructura cristalina (cristal)</h2>
 <div class="justify">
 <p>Estaremos interesados en arreglos de átomos con simetría traslacional que llamaremos estructuras periódicas o estructuras cristalinas (de forma breve también los llamaremos cristales). Las estructuras periódicas se caracterizan por la combinación de una red y un decorado.</p>
 </div>
@@ -481,9 +454,8 @@ window.Quarto = {
 <div class="justify">
 <p>En el curso consideraremos únicamente ejemplos en dos dimensiones sólo por cuestiones visuales de los resultados.</p>
 </div>
-</div></div></section>
-<section id="en-2d" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="en-2d"><span class="header-section-number">1.2</span> En 2D</h2>
+</div></div><section id="red-en-2d" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="red-en-2d"><span class="header-section-number">1.1</span> Red en 2D</h2>
 <div id="cell-fig-red2d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -650,7 +622,7 @@ Figure&nbsp;1.2: Ejemplo de red bidimensional
 <div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div class="justify">
-<p>En 2D, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza su mediatriz (una línea perpendicular al segmento que pase por el punto medio). El área más pequeña encerrada por las mediatrices es la celda primitiva de Wigner-Seitz. En 3D, también, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza un plano perpendicular a cada segmento que pase por el punto medio. El volumen más pequeño encerrado por los planos es la celda primitiva de Wigner-Seitz.</p>
+<p>En 2D, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza su mediatriz (una línea perpendicular al segmento que pase por el punto medio). El área más pequeña encerrada por las mediatrices es la celda primitiva de Wigner-Seitz.</p>
 </div>
 </div>
 </div>
@@ -732,8 +704,8 @@ Figure&nbsp;1.3: Ejemplo de red bidimensional
 </div>
 </div>
 </section>
-<section id="decorado-motif" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Decorado (Motif)</h1>
+<section id="decorado-motif" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="decorado-motif"><span class="header-section-number">1.2</span> Decorado (Motif)</h2>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -824,9 +796,10 @@ Figure&nbsp;1.3: Ejemplo de red bidimensional
 <div id="fig-panaldeabeja" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-panaldeabeja-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>                            <div id="40092be4-2c9d-4ff9-a90d-bf87f24cd3e8" class="plotly-graph-div" style="height:400px; width:400px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("40092be4-2c9d-4ff9-a90d-bf87f24cd3e8")) {                    Plotly.newPlot(                        "40092be4-2c9d-4ff9-a90d-bf87f24cd3e8",                        [{"mode":"markers","showlegend":false,"x":[-5.5,-4.5,-3.5,-2.5,-1.5,-0.5,0.5,1.5,-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,-4.5,-3.5,-2.5,-1.5,-0.5,0.5,1.5,2.5,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,-3.5,-2.5,-1.5,-0.5,0.5,1.5,2.5,3.5,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,-2.5,-1.5,-0.5,0.5,1.5,2.5,3.5,4.5,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0],"y":[-3.1754264805429413,-3.1754264805429413,-3.1754264805429413,-3.1754264805429413,-3.1754264805429413,-3.1754264805429413,-3.1754264805429413,-3.1754264805429413,-2.309401076758503,-2.309401076758503,-2.309401076758503,-2.309401076758503,-2.309401076758503,-2.309401076758503,-2.309401076758503,-2.309401076758503,-1.4433756729740643,-1.4433756729740643,-1.4433756729740643,-1.4433756729740643,-1.4433756729740643,-1.4433756729740643,-1.4433756729740643,-1.4433756729740643,-0.5773502691896257,-0.5773502691896257,-0.5773502691896257,-0.5773502691896257,-0.5773502691896257,-0.5773502691896257,-0.5773502691896257,-0.5773502691896257,0.28867513459481287,0.28867513459481287,0.28867513459481287,0.28867513459481287,0.28867513459481287,0.28867513459481287,0.28867513459481287,0.28867513459481287,1.1547005383792515,1.1547005383792515,1.1547005383792515,1.1547005383792515,1.1547005383792515,1.1547005383792515,1.1547005383792515,1.1547005383792515,2.02072594216369,2.02072594216369,2.02072594216369,2.02072594216369,2.02072594216369,2.02072594216369,2.02072594216369,2.02072594216369,2.886751345948129,2.886751345948129,2.886751345948129,2.886751345948129,2.886751345948129,2.886751345948129,2.886751345948129,2.886751345948129],"type":"scatter"},{"mode":"markers","showlegend":false,"x":[-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,-4.5,-3.5,-2.5,-1.5,-0.5,0.5,1.5,2.5,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,-3.5,-2.5,-1.5,-0.5,0.5,1.5,2.5,3.5,-3.0,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,-2.5,-1.5,-0.5,0.5,1.5,2.5,3.5,4.5,-2.0,-1.0,0.0,1.0,2.0,3.0,4.0,5.0,-1.5,-0.5,0.5,1.5,2.5,3.5,4.5,5.5],"y":[-2.8867513459481287,-2.8867513459481287,-2.8867513459481287,-2.8867513459481287,-2.8867513459481287,-2.8867513459481287,-2.8867513459481287,-2.8867513459481287,-2.0207259421636903,-2.0207259421636903,-2.0207259421636903,-2.0207259421636903,-2.0207259421636903,-2.0207259421636903,-2.0207259421636903,-2.0207259421636903,-1.1547005383792515,-1.1547005383792515,-1.1547005383792515,-1.1547005383792515,-1.1547005383792515,-1.1547005383792515,-1.1547005383792515,-1.1547005383792515,-0.28867513459481287,-0.28867513459481287,-0.28867513459481287,-0.28867513459481287,-0.28867513459481287,-0.28867513459481287,-0.28867513459481287,-0.28867513459481287,0.5773502691896257,0.5773502691896257,0.5773502691896257,0.5773502691896257,0.5773502691896257,0.5773502691896257,0.5773502691896257,0.5773502691896257,1.4433756729740643,1.4433756729740643,1.4433756729740643,1.4433756729740643,1.4433756729740643,1.4433756729740643,1.4433756729740643,1.4433756729740643,2.309401076758503,2.309401076758503,2.309401076758503,2.309401076758503,2.309401076758503,2.309401076758503,2.309401076758503,2.309401076758503,3.1754264805429417,3.1754264805429417,3.1754264805429417,3.1754264805429417,3.1754264805429417,3.1754264805429417,3.1754264805429417,3.1754264805429417],"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"range":[-2,2]},"yaxis":{"range":[-2,2]},"width":400,"height":400},                        {"responsive": true}                    ).then(function(){
+<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js"></script>                <div id="d73a470c-ad3a-4366-b9e6-92599edc09b4" class="plotly-graph-div" style="height:400px; width:400px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("d73a470c-ad3a-4366-b9e6-92599edc09b4")) {                    Plotly.newPlot(                        "d73a470c-ad3a-4366-b9e6-92599edc09b4",                        [{"mode":"markers","showlegend":false,"x":{"dtype":"f8","bdata":"AAAAAAAAFsAAAAAAAAASwAAAAAAAAAzAAAAAAAAABMAAAAAAAAD4vwAAAAAAAOC\u002fAAAAAAAA4D8AAAAAAAD4PwAAAAAAABTAAAAAAAAAEMAAAAAAAAAIwAAAAAAAAADAAAAAAAAA8L8AAAAAAAAAAAAAAAAAAPA\u002fAAAAAAAAAEAAAAAAAAASwAAAAAAAAAzAAAAAAAAABMAAAAAAAAD4vwAAAAAAAOC\u002fAAAAAAAA4D8AAAAAAAD4PwAAAAAAAARAAAAAAAAAEMAAAAAAAAAIwAAAAAAAAADAAAAAAAAA8L8AAAAAAAAAAAAAAAAAAPA\u002fAAAAAAAAAEAAAAAAAAAIQAAAAAAAAAzAAAAAAAAABMAAAAAAAAD4vwAAAAAAAOC\u002fAAAAAAAA4D8AAAAAAAD4PwAAAAAAAARAAAAAAAAADEAAAAAAAAAIwAAAAAAAAADAAAAAAAAA8L8AAAAAAAAAAAAAAAAAAPA\u002fAAAAAAAAAEAAAAAAAAAIQAAAAAAAABBAAAAAAAAABMAAAAAAAAD4vwAAAAAAAOC\u002fAAAAAAAA4D8AAAAAAAD4PwAAAAAAAARAAAAAAAAADEAAAAAAAAASQAAAAAAAAADAAAAAAAAA8L8AAAAAAAAAAAAAAAAAAPA\u002fAAAAAAAAAEAAAAAAAAAIQAAAAAAAABBAAAAAAAAAFEA="},"y":{"dtype":"f8","bdata":"Rkam\u002f0VnCcBGRqb\u002fRWcJwEZGpv9FZwnARkam\u002f0VnCcBGRqb\u002fRWcJwEZGpv9FZwnARkam\u002f0VnCcBGRqb\u002fRWcJwBwzkEWneQLAHDOQRad5AsAcM5BFp3kCwBwzkEWneQLAHDOQRad5AsAcM5BFp3kCwBwzkEWneQLAHDOQRad5AsDjP\u002fQWERj3v+M\u002f9BYRGPe\u002f4z\u002f0FhEY97\u002fjP\u002fQWERj3v+M\u002f9BYRGPe\u002f4z\u002f0FhEY97\u002fjP\u002fQWERj3v+M\u002f9BYRGPe\u002fHDOQRad54r8cM5BFp3nivxwzkEWneeK\u002fHDOQRad54r8cM5BFp3nivxwzkEWneeK\u002fHDOQRad54r8cM5BFp3nivxwzkEWnedI\u002fHDOQRad50j8cM5BFp3nSPxwzkEWnedI\u002fHDOQRad50j8cM5BFp3nSPxwzkEWnedI\u002fHDOQRad50j8cM5BFp3nyPxwzkEWnefI\u002fHDOQRad58j8cM5BFp3nyPxwzkEWnefI\u002fHDOQRad58j8cM5BFp3nyPxwzkEWnefI\u002fuCzeXHIqAEC4LN5ccioAQLgs3lxyKgBAuCzeXHIqAEC4LN5ccioAQLgs3lxyKgBAuCzeXHIqAEC4LN5ccioAQOQ\u002f9BYRGAdA5D\u002f0FhEYB0DkP\u002fQWERgHQOQ\u002f9BYRGAdA5D\u002f0FhEYB0DkP\u002fQWERgHQOQ\u002f9BYRGAdA5D\u002f0FhEYB0A="},"type":"scatter"},{"mode":"markers","showlegend":false,"x":{"dtype":"f8","bdata":"AAAAAAAAFMAAAAAAAAAQwAAAAAAAAAjAAAAAAAAAAMAAAAAAAADwvwAAAAAAAAAAAAAAAAAA8D8AAAAAAAAAQAAAAAAAABLAAAAAAAAADMAAAAAAAAAEwAAAAAAAAPi\u002fAAAAAAAA4L8AAAAAAADgPwAAAAAAAPg\u002fAAAAAAAABEAAAAAAAAAQwAAAAAAAAAjAAAAAAAAAAMAAAAAAAADwvwAAAAAAAAAAAAAAAAAA8D8AAAAAAAAAQAAAAAAAAAhAAAAAAAAADMAAAAAAAAAEwAAAAAAAAPi\u002fAAAAAAAA4L8AAAAAAADgPwAAAAAAAPg\u002fAAAAAAAABEAAAAAAAAAMQAAAAAAAAAjAAAAAAAAAAMAAAAAAAADwvwAAAAAAAAAAAAAAAAAA8D8AAAAAAAAAQAAAAAAAAAhAAAAAAAAAEEAAAAAAAAAEwAAAAAAAAPi\u002fAAAAAAAA4L8AAAAAAADgPwAAAAAAAPg\u002fAAAAAAAABEAAAAAAAAAMQAAAAAAAABJAAAAAAAAAAMAAAAAAAADwvwAAAAAAAAAAAAAAAAAA8D8AAAAAAAAAQAAAAAAAAAhAAAAAAAAAEEAAAAAAAAAUQAAAAAAAAPi\u002fAAAAAAAA4L8AAAAAAADgPwAAAAAAAPg\u002fAAAAAAAABEAAAAAAAAAMQAAAAAAAABJAAAAAAAAAFkA="},"y":{"dtype":"f8","bdata":"4z\u002f0FhEYB8DjP\u002fQWERgHwOM\u002f9BYRGAfA4z\u002f0FhEYB8DjP\u002fQWERgHwOM\u002f9BYRGAfA4z\u002f0FhEYB8DjP\u002fQWERgHwLks3lxyKgDAuSzeXHIqAMC5LN5ccioAwLks3lxyKgDAuSzeXHIqAMC5LN5ccioAwLks3lxyKgDAuSzeXHIqAMAcM5BFp3nyvxwzkEWnefK\u002fHDOQRad58r8cM5BFp3nyvxwzkEWnefK\u002fHDOQRad58r8cM5BFp3nyvxwzkEWnefK\u002fHDOQRad50r8cM5BFp3nSvxwzkEWnedK\u002fHDOQRad50r8cM5BFp3nSvxwzkEWnedK\u002fHDOQRad50r8cM5BFp3nSvxwzkEWneeI\u002fHDOQRad54j8cM5BFp3niPxwzkEWneeI\u002fHDOQRad54j8cM5BFp3niPxwzkEWneeI\u002fHDOQRad54j\u002fjP\u002fQWERj3P+M\u002f9BYRGPc\u002f4z\u002f0FhEY9z\u002fjP\u002fQWERj3P+M\u002f9BYRGPc\u002f4z\u002f0FhEY9z\u002fjP\u002fQWERj3P+M\u002f9BYRGPc\u002fHDOQRad5AkAcM5BFp3kCQBwzkEWneQJAHDOQRad5AkAcM5BFp3kCQBwzkEWneQJAHDOQRad5AkAcM5BFp3kCQEdGpv9FZwlAR0am\u002f0VnCUBHRqb\u002fRWcJQEdGpv9FZwlAR0am\u002f0VnCUBHRqb\u002fRWcJQEdGpv9FZwlAR0am\u002f0VnCUA="},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"range":[-2,2]},"yaxis":{"range":[-2,2]},"width":400,"height":400},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('40092be4-2c9d-4ff9-a90d-bf87f24cd3e8');
+var gd = document.getElementById('d73a470c-ad3a-4366-b9e6-92599edc09b4');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -848,22 +821,16 @@ if (outputEl) {{
     x.observe(outputEl, {childList: true});
 }}
 
-                        })                };                });            </script>        </div>
+                        })                };            </script>        </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-panaldeabeja-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Ejemplo de estructura cristalina de panal de abeja.
+Figure&nbsp;1.4: Ejemplo de estructura cristalina de panal de abeja.
 </figcaption>
 </figure>
 </div>
 </div>
-<p>Ver <span class="citation" data-cites="Vanderbilt_2018">Vanderbilt (<a href="references.html#ref-Vanderbilt_2018" role="doc-biblioref">2018</a>)</span> como referencia.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-Vanderbilt_2018" class="csl-entry" role="listitem">
-Vanderbilt, David. 2018. <em>Berry Phases in Electronic Structure Theory: Electric Polarization, Orbital Magnetization and Topological Insulators</em>. Cambridge University Press.
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -1282,13 +1249,13 @@ Vanderbilt, David. 2018. <em>Berry Phases in Electronic Structure Theory: Electr
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Prefacio">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
+      <a href="./index.html" class="pagination-link" aria-label="Comentarios generales">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Comentarios generales</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./2_grafeno.html" class="pagination-link" aria-label="Grafeno">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grafeno</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./1_tbh.html" class="pagination-link" aria-label="Aproximación de amarre fuerte">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aproximación de amarre fuerte</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
