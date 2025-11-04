@@ -1,0 +1,82 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "3rdSPDM",
+    "section": "",
+    "text": "Comentarios generales",
+    "crumbs": [
+      "Comentarios generales"
+    ]
+  },
+  {
+    "objectID": "1_basics.html",
+    "href": "1_basics.html",
+    "title": "1  Conceptos básicos",
+    "section": "",
+    "text": "1.1 Estructura cristalina (cristal)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "1_basics.html#cristal-estructura-cristalina",
+    "href": "1_basics.html#cristal-estructura-cristalina",
+    "title": "1  Conceptos básicos",
+    "section": "",
+    "text": "Vanderbilt, David. 2018. Berry Phases in Electronic Structure Theory: Electric Polarization, Orbital Magnetization and Topological Insulators. Cambridge University Press.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "2_grafeno.html",
+    "href": "2_grafeno.html",
+    "title": "2  Grafeno",
+    "section": "",
+    "text": "In summary, …",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Grafeno</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Vanderbilt, David. 2018. Berry Phases in Electronic Structure\nTheory: Electric Polarization, Orbital Magnetization and Topological\nInsulators. Cambridge University Press.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "1_basics.html#estructura-cristalina-cristal",
+    "href": "1_basics.html#estructura-cristalina-cristal",
+    "title": "1  Conceptos básicos",
+    "section": "",
+    "text": "Estaremos interesados en arreglos de átomos con simetría traslacional que llamaremos estructuras periódicas o estructuras cristalinas (de forma breve también los llamaremos cristales). Las estructuras periódicas se caracterizan por la combinación de una red y un decorado.\n\n\n\n\n\n\n\nNoteRed (definición)\n\n\n\n\n\nUna red es el conjunto infinito de puntos definidos por la suma con coeficientes enteros de un conjunto de vectores de red linealmente independientes (a lo largo del curso pensaremos en ejemplos en dos dimension).\n\\[\n\\text{En 2D: }\\quad \\bigg\\{ \\vec{R}_{(n1,n2)} = n_1\\vec{a}_1 +n_2\\vec{a}_2 \\;\\bigg|\\; n_1,n_2 \\in \\mathbb{Z}\\bigg\\}\n\\]\n\n\n\n\n\n\nEn el curso consideraremos únicamente ejemplos en dos dimensiones sólo por cuestiones visuales de los resultados.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "1_basics.html#en-2d",
+    "href": "1_basics.html#en-2d",
+    "title": "1  Conceptos básicos",
+    "section": "1.2 En 2D",
+    "text": "1.2 En 2D\n\n\nMostrar código\n# En el ambiente cargamos las opciones más comúnes de numpy, scipy y matplotlib\nfrom pylab import * \n\n# Definimos la magnitud de los vectores, a1 y a2\na1 = 1.0\na2 = 1.0\n# Definimos el vector vec_a1\nvec_a1 = array([       a1,         0])\n# Definimos el vector vec_a2 con una rotación de un ángulo θ\nθ = radians(60)\nvec_a2 = array([a2*cos(θ), a2*sin(θ)])\n# Tomamos un subconjunto del conjunto de enteros [-4,-3,-2,-1,0,1,2,3,4] \n# tanto para n1 como n2\nn1,n2 = meshgrid ( arange( -4, 5 ), arange( -4, 5 ) )\n# Con el fin de realizar las diferentes combinaciones lineales nos será \n# útil tener los coeficiente como un arreglo en una dimensión\nn1 = n1.flatten()\nn2 = n2.flatten()\n# Colocamos los vectores en una matriz, donde cada renglón es un vector\nA = array( [vec_a1,vec_a2] )\n# Colocamos los coeficientes en una matriz\ncoefs = column_stack((n1,n2))\n# Obtenemos los puntos de la red al multiplicar ambas matrices\nred = dot( coefs,A )\n\n# Graficamos \n# Definimos una figura -&gt; fig y sus ejes -&gt; ax\nfig,ax = plt.subplots(figsize=((6,6)))\n\n# Graficamos con puntos los puntos de la red en un sistema de coordenadas cartesiano. \n# En el eje x colocamos los puntos de la red y en el eje y asignamos cero.\n# ax.scatter( [coordenadas: x] , [coordenadas: y], label=\"Etiqueta que identifica los datos\")\nax.scatter(red.T[0], red.T[1], label=f\"$a_1={a1:.2f}, a_2={a2:.2f}, θ={rad2deg(θ):.1f}$\")\n# Escribimos ax.scatter ya que se grafican los puntos (scatter) en los ejes (ax).\n\n# Graficamos los vectores de red\nax.arrow(0,0,vec_a1[0],vec_a1[1],width=0.08,lw=0,label=\"vec $a_1$\",color=\"red\",length_includes_head=True)\nax.arrow(0,0,vec_a2[0],vec_a2[1],width=0.08,lw=0,label=\"vec $a_2$\",color=\"blue\",length_includes_head=True)\n\n# Colocamos el cuadro de leyenda\nax.legend()\n\nax.set_aspect('equal')\n\n# Mostramos la gráfica\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1.1: Ejemplo de red bidimensional\n\n\n\n\n\n\n\n\n\n\n\nNoteCelda primitiva (definición)\n\n\n\n\n\nEs la celda unitaria que contiene un punto de la red.\n\n\n\nHay dos formas de identificar la celda primitiva.\n\n\n\n\n\n\nTipA partir de los vectores de red\n\n\n\n\n\n\nEn 2D, la celda primitiva es el paralelogramo formado por los vectores de la red. En 3D, la celda primitiva es el paralelepipedo formado por los vectores de la red.\n\n\n\n\n\n\nMostrar código\nfrom pylab import *\n\ndef GraficadeRedCell(vec_a1,vec_a2,polyx,polyy):\n    n1,n2 = meshgrid ( arange( -12, 13 ), arange( -12,13 ) )\n    n1 = n1.flatten()\n    n2 = n2.flatten()\n    A = array( [vec_a1,vec_a2] )\n    coefs = column_stack((n1,n2))\n    red = dot( coefs,A )\n\n    a1 = sqrt(dot(vec_a1,vec_a1))\n    a2 = sqrt(dot(vec_a2,vec_a2))\n\n    fig,ax = plt.subplots(figsize=((6,6)))\n    ax.scatter(red.T[0], red.T[1], label=f\"$a_1={a1:.2f}, a_2={a2:.2f}, θ={rad2deg(θ):.1f}$\")\n    ax.arrow(0,0,vec_a1[0],vec_a1[1],width=0.08,lw=0,label=\"vec $a_1$\",color=\"red\",length_includes_head=True)\n    ax.arrow(0,0,vec_a2[0],vec_a2[1],width=0.08,lw=0,label=\"vec $a_2$\",color=\"blue\",length_includes_head=True)\n\n\n    ax.fill(polyx,polyy,alpha=0.5,color=\"#50c878\")\n\n    ax.legend()\n    ax.set_xlim(-6.4,6.4)\n    ax.set_ylim(-3.4,3.4)\n    ax.set_aspect('equal')\n    plt.show()\n    return \n\na1 = 1.0\na2 = 1.0\nvec_a1 = array([       a1,         0])\nθ = radians(60)\nvec_a2 = array([a2*cos(θ), a2*sin(θ)])\n\npolyx = [0,vec_a1[0],vec_a1[0]+vec_a2[0],vec_a2[0],0]\npolyy = [0,vec_a1[1],vec_a1[1]+vec_a2[1],vec_a2[1],0]\n\nGraficadeRedCell(vec_a1,vec_a2,polyx,polyy)\n\n\n\n\n\n\n\n\nFigure 1.2: Ejemplo de red bidimensional\n\n\n\n\n\n\n\n\n\n\n\nTipConstrucción de Wigner-Seitz\n\n\n\n\n\n\nEn 2D, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza su mediatriz (una línea perpendicular al segmento que pase por el punto medio). El área más pequeña encerrada por las mediatrices es la celda primitiva de Wigner-Seitz. En 3D, también, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza un plano perpendicular a cada segmento que pase por el punto medio. El volumen más pequeño encerrado por los planos es la celda primitiva de Wigner-Seitz.\n\n\n\n\n\n\nMostrar código\ndef FindInterection2D(v,w):\n    AA = np.array([v[0:2],w[0:2]])\n    bb = 0.5*np.array( [np.dot(v,v),np.dot(w,w)] )\n    return np.linalg.solve(AA, bb)\n\ndef BuildWignerSeitz(vec_a1,vec_a2):\n    puntosall = []\n    for n in arange(-1,2):\n        for m in arange(-1,2):\n            w = n*vec_a1+m*vec_a2\n            if (m!=0):\n                xp = FindInterection2D( vec_a1,w)\n                xn = FindInterection2D(-vec_a1,w)\n            if (n!=0):\n                yp = FindInterection2D( vec_a2,w)\n                yn = FindInterection2D(-vec_a2,w)\n            puntosall.append(xp)\n            puntosall.append(yp)\n            puntosall.append(xn)\n            puntosall.append(yn)\n    puntosall = array(puntosall).T\n\n    # Selecciona sólo los que están a la mínima distancia\n    dist    = sum(puntosall.T*puntosall.T,axis=1)\n    mindist = min(dist)\n    ϵ       = 1e-4\n    logical = dist&lt;(mindist+ϵ)\n    WignerSeitz = puntosall[:,logical]\n\n    # Quita los puntos repetidos (sólo funciona en 2D)\n    n   = 0\n    z   = WignerSeitz[0]+WignerSeitz[1]*1J\n    ang = angle(z)\n    while (n&lt;len(z)):\n        l_ind    = ones(len(z),dtype=bool)\n        l_ind[n] = False\n        \n        arrlog = logical_and( abs(ang-ang[n])&lt;ϵ, l_ind)\n\n        arrlog = array( arrlog==False)\n\n        z   = array(z[arrlog])\n        ang = angle(z)\n        n += 1\n        \n    indSort = argsort(ang)\n\n    WignerSeitz = array([real(z[indSort]),imag(z[indSort])])\n    return WignerSeitz\n\na1 = 1.0\na2 = 1.0\nvec_a1 = array([       a1,         0])\nθ = radians(60)\nvec_a2 = array([a2*cos(θ), a2*sin(θ)])\n\nWignerSeitz = BuildWignerSeitz(vec_a1,vec_a2)\n\nGraficadeRedCell(vec_a1,vec_a2,WignerSeitz[0],WignerSeitz[1])\n\n\n\n\n\n\n\n\nFigure 1.3: Ejemplo de red bidimensional",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Conceptos básicos</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#requerimientos",
+    "href": "index.html#requerimientos",
+    "title": "3rdSPDM",
+    "section": "Requerimientos",
+    "text": "Requerimientos\n\nEn la parte práctica del curso utilizaremos el servicio de https://colab.research.google.com/ por lo que se requiere una cuenta asociada de Google y conexión a internet.",
+    "crumbs": [
+      "Comentarios generales"
+    ]
+  }
+]

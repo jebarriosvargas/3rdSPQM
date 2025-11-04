@@ -9,7 +9,7 @@ book:
   author: "JEBV"
   date: "04/11/2025"
   chapters:
-    - 0_index.qmd
+    - index.qmd
     - 1_basics.qmd
     - 2_grafeno.qmd
     - 3_haldane.qmd
@@ -22,11 +22,12 @@ format:
     theme:
       light: united
       dark: slate
-    css: style.css
     toc: true
     toc-title: Contenido
-  pdf:
-    documentclass: scrreprt
-
+    css: style.css
+    code-fold: true
+    code-summary: "Mostrar código"
+    code-line-numbers: true
+    code-copy: true
 
 

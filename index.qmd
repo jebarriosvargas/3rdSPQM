@@ -1,0 +1,12 @@
+# Comentarios generales {.unnumbered}
+
+
+:::{.justify}
+Anotaciones del curso corto de *Hands-on tight-binding modeling: from bulk bands to edge states* a realizarse en la  **3rd School on Physics of Quantum Materials** del 4, 5 y 6 de noviembre de 2025 (15:00 - 16:00h).
+:::
+
+## Requerimientos
+
+:::{.justify}
+En la parte práctica del curso utilizaremos el servicio de [https://colab.research.google.com/](https://colab.research.google.com/) por lo que se requiere una cuenta asociada de Google y conexión a internet.
+:::

@@ -1,8 +1,295 @@
 # Conceptos básicos
 
-## Cristal (estructura cristalina)
+## Estructura cristalina (cristal)
+
+:::{.justify}
+Estaremos interesados en arreglos de átomos con simetría traslacional que llamaremos estructuras periódicas o estructuras cristalinas (de forma breve también los llamaremos cristales). Las estructuras periódicas se caracterizan por la combinación de una red y un decorado.
+:::
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+### Red (definición)
+
+Una red es el conjunto infinito de puntos definidos por la suma con coeficientes enteros de un conjunto de vectores de red linealmente independientes (a lo largo del curso pensaremos en ejemplos en dos dimension).
+
+$$
+\text{En 2D: }\quad \bigg\{ \vec{R}_{(n1,n2)} = n_1\vec{a}_1 +n_2\vec{a}_2 \;\bigg|\; n_1,n_2 \in \mathbb{Z}\bigg\}
+$$
+:::
+
+::: {.column-margin}
+::: {.justify}
+En el curso consideraremos únicamente ejemplos en dos dimensiones sólo por cuestiones visuales de los resultados.
+:::
+:::
+
+## En 2D
+
+```{python}
+#| label: fig-red2d
+#| fig-cap: "Ejemplo de red bidimensional"
+
+# En el ambiente cargamos las opciones más comúnes de numpy, scipy y matplotlib
+from pylab import * 
+
+# Definimos la magnitud de los vectores, a1 y a2
+a1 = 1.0
+a2 = 1.0
+# Definimos el vector vec_a1
+vec_a1 = array([       a1,         0])
+# Definimos el vector vec_a2 con una rotación de un ángulo θ
+θ = radians(60)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+# Tomamos un subconjunto del conjunto de enteros [-4,-3,-2,-1,0,1,2,3,4] 
+# tanto para n1 como n2
+n1,n2 = meshgrid ( arange( -4, 5 ), arange( -4, 5 ) )
+# Con el fin de realizar las diferentes combinaciones lineales nos será 
+# útil tener los coeficiente como un arreglo en una dimensión
+n1 = n1.flatten()
+n2 = n2.flatten()
+# Colocamos los vectores en una matriz, donde cada renglón es un vector
+A = array( [vec_a1,vec_a2] )
+# Colocamos los coeficientes en una matriz
+coefs = column_stack((n1,n2))
+# Obtenemos los puntos de la red al multiplicar ambas matrices
+red = dot( coefs,A )
+
+# Graficamos 
+# Definimos una figura -> fig y sus ejes -> ax
+fig,ax = plt.subplots(figsize=((6,6)))
+
+# Graficamos con puntos los puntos de la red en un sistema de coordenadas cartesiano. 
+# En el eje x colocamos los puntos de la red y en el eje y asignamos cero.
+# ax.scatter( [coordenadas: x] , [coordenadas: y], label="Etiqueta que identifica los datos")
+ax.scatter(red.T[0], red.T[1], label=f"$a_1={a1:.2f}, a_2={a2:.2f}, θ={rad2deg(θ):.1f}$")
+# Escribimos ax.scatter ya que se grafican los puntos (scatter) en los ejes (ax).
+
+# Graficamos los vectores de red
+ax.arrow(0,0,vec_a1[0],vec_a1[1],width=0.08,lw=0,label="vec $a_1$",color="red",length_includes_head=True)
+ax.arrow(0,0,vec_a2[0],vec_a2[1],width=0.08,lw=0,label="vec $a_2$",color="blue",length_includes_head=True)
+
+# Colocamos el cuadro de leyenda
+ax.legend()
+
+ax.set_aspect('equal')
+
+# Mostramos la gráfica
+plt.show()
+```
 
 
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Celda primitiva (definición)
+Es la celda unitaria que contiene un punto de la red.
+:::
+
+Hay dos formas de identificar la celda primitiva.
+
+::: {.callout-tip appearance="simple" icon=false collapse="false"}
+## A partir de los vectores de red
+:::{.justify}
+En 2D, la celda primitiva es el paralelogramo formado por los vectores de la red. 
+En 3D, la celda primitiva es el paralelepipedo formado por los vectores de la red.
+:::
+:::
+
+```{python}
+#| label: fig-celdas2d1
+#| fig-cap: "Ejemplo de red bidimensional"
+
+from pylab import *
+
+def GraficadeRedCell(vec_a1,vec_a2,polyx,polyy):
+    n1,n2 = meshgrid ( arange( -12, 13 ), arange( -12,13 ) )
+    n1 = n1.flatten()
+    n2 = n2.flatten()
+    A = array( [vec_a1,vec_a2] )
+    coefs = column_stack((n1,n2))
+    red = dot( coefs,A )
+
+    a1 = sqrt(dot(vec_a1,vec_a1))
+    a2 = sqrt(dot(vec_a2,vec_a2))
+
+    fig,ax = plt.subplots(figsize=((6,6)))
+    ax.scatter(red.T[0], red.T[1], label=f"$a_1={a1:.2f}, a_2={a2:.2f}, θ={rad2deg(θ):.1f}$")
+    ax.arrow(0,0,vec_a1[0],vec_a1[1],width=0.08,lw=0,label="vec $a_1$",color="red",length_includes_head=True)
+    ax.arrow(0,0,vec_a2[0],vec_a2[1],width=0.08,lw=0,label="vec $a_2$",color="blue",length_includes_head=True)
+
+
+    ax.fill(polyx,polyy,alpha=0.5,color="#50c878")
+
+    ax.legend()
+    ax.set_xlim(-6.4,6.4)
+    ax.set_ylim(-3.4,3.4)
+    ax.set_aspect('equal')
+    plt.show()
+    return 
+
+a1 = 1.0
+a2 = 1.0
+vec_a1 = array([       a1,         0])
+θ = radians(60)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+
+polyx = [0,vec_a1[0],vec_a1[0]+vec_a2[0],vec_a2[0],0]
+polyy = [0,vec_a1[1],vec_a1[1]+vec_a2[1],vec_a2[1],0]
+
+GraficadeRedCell(vec_a1,vec_a2,polyx,polyy)
+
+```
+
+
+::: {.callout-tip appearance="simple" icon=false collapse="false"}
+## Construcción de Wigner-Seitz
+:::{.justify}
+En 2D, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza su mediatriz (una línea perpendicular al segmento que pase por el punto medio). El área más pequeña encerrada por las mediatrices es la celda primitiva de Wigner-Seitz.
+En 3D, también, elegimos un punto de la red y dibujamos los segmentos de recta que unen el punto elegido con los puntos vecinos. Para cada segmento se traza un plano perpendicular a cada segmento que pase por el punto medio. El volumen más pequeño encerrado por los planos es la celda primitiva de Wigner-Seitz.
+:::
+:::
+
+```{python}
+#| label: fig-celdas2d2
+#| fig-cap: "Ejemplo de red bidimensional"
+
+def FindInterection2D(v,w):
+    AA = np.array([v[0:2],w[0:2]])
+    bb = 0.5*np.array( [np.dot(v,v),np.dot(w,w)] )
+    return np.linalg.solve(AA, bb)
+
+def BuildWignerSeitz(vec_a1,vec_a2):
+    puntosall = []
+    for n in arange(-1,2):
+        for m in arange(-1,2):
+            w = n*vec_a1+m*vec_a2
+            if (m!=0):
+                xp = FindInterection2D( vec_a1,w)
+                xn = FindInterection2D(-vec_a1,w)
+            if (n!=0):
+                yp = FindInterection2D( vec_a2,w)
+                yn = FindInterection2D(-vec_a2,w)
+            puntosall.append(xp)
+            puntosall.append(yp)
+            puntosall.append(xn)
+            puntosall.append(yn)
+    puntosall = array(puntosall).T
+
+    # Selecciona sólo los que están a la mínima distancia
+    dist    = sum(puntosall.T*puntosall.T,axis=1)
+    mindist = min(dist)
+    ϵ       = 1e-4
+    logical = dist<(mindist+ϵ)
+    WignerSeitz = puntosall[:,logical]
+
+    # Quita los puntos repetidos (sólo funciona en 2D)
+    n   = 0
+    z   = WignerSeitz[0]+WignerSeitz[1]*1J
+    ang = angle(z)
+    while (n<len(z)):
+        l_ind    = ones(len(z),dtype=bool)
+        l_ind[n] = False
+        
+        arrlog = logical_and( abs(ang-ang[n])<ϵ, l_ind)
+
+        arrlog = array( arrlog==False)
+
+        z   = array(z[arrlog])
+        ang = angle(z)
+        n += 1
+        
+    indSort = argsort(ang)
+
+    WignerSeitz = array([real(z[indSort]),imag(z[indSort])])
+    return WignerSeitz
+
+a1 = 1.0
+a2 = 1.0
+vec_a1 = array([       a1,         0])
+θ = radians(60)
+vec_a2 = array([a2*cos(θ), a2*sin(θ)])
+
+WignerSeitz = BuildWignerSeitz(vec_a1,vec_a2)
+
+GraficadeRedCell(vec_a1,vec_a2,WignerSeitz[0],WignerSeitz[1])
+
+```
+
+
+# Decorado (Motif)
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Decorado (definición)
+:::{.justify}
+La descripción de los objetos en una celda unitaria respecto a los puntos de referencia en una celda se conocen como decorado (motif).
+:::
+:::
+
+
+
+::: {.callout-note appearance="simple" icon=false collapse="false"}
+## Estructura cristalina
+Una estructura cristalina se compone de una red y un decorado.
+:::
+
+Ejemplo: Panal de abeja
+
+$$
+\text{sitio 1: }\frac{1}{3}\vec{a}_1 + \frac{1}{3}\vec{a}_2\quad
+\text{sitio 2: }\frac{2}{3}\vec{a}_1 + \frac{2}{3}\vec{a}_2
+$$
+
+donde 
+
+$$
+\vec{a}_1=\left[\begin{array}{c}1\\0\end{array} \right] \quad \text{y} \quad \vec{a}_2=\left[\begin{array}{c}\cos(60^\circ)\\\sin(60^\circ)\end{array} \right]
+$$
+
+
+```{python}
+#| label: fig-panaldeabeja
+#| fig-cap: "Ejemplo de estructura cristalina de panal de abeja."
+
+from pylab import *
+def GenerarRed(n_1,n_2,a_1,a_2):
+  # -- Desarrollo técnico --
+  # Malla de enteros
+  N1,N2 = meshgrid(n_1,n_2)
+  # Cambiar a columnas
+  N1    = N1.flatten()
+  N2    = N2.flatten()
+  N1y2 = column_stack((N1,N2))
+  # Agrupar los vectores de red
+  avec = [a_1,a_2]
+
+  # Tomar todas las combinaciones
+  Rx,Ry = dot( N1y2,avec ).T
+  return Rx,Ry
+
+a_1 = [1,0]
+a_2 = [1/2,sqrt(3)/2]
+
+n_1 = arange(-4,4)
+n_2 = arange(-4,4)
+
+Rx,Ry = GenerarRed(n_1,n_2,a_1,a_2)
+
+sitio1x = Rx + (1/3)*( a_1[0]+a_2[0] )
+sitio1y = Ry + (1/3)*( a_1[1]+a_2[1] )
+
+sitio2x = Rx + (2/3)*( a_1[0]+a_2[0] )
+sitio2y = Ry + (2/3)*( a_1[1]+a_2[1] )
+
+import plotly.graph_objects as go
+
+Data = [go.Scatter(x=sitio1x,y=sitio1y,mode='markers',showlegend=False),
+        go.Scatter(x=sitio2x,y=sitio2y,mode='markers',showlegend=False)]
+
+fig = go.Figure(data=Data)
+fig.update_xaxes(range=[-2,2])
+fig.update_yaxes(range=[-2,2])
+fig.update_layout(width=400, height=400)
+fig.show()
+
+
+```
 
 
 Ver @Vanderbilt_2018 como referencia.
