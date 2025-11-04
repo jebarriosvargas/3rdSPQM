@@ -2,6 +2,8 @@
 
 Cuaderno de trabajo: [Colab Google](https://colab.research.google.com/drive/1LBiC20jvHVA5is3h2WlANj9W2LVxVY7d?usp=sharing).
 
+Cuaderno de trabajo de la sesión [Google Colab](https://colab.research.google.com/drive/1aiQOBkq4y0R73CyNj10lXZUPxxavQ2X_?usp=sharing)
+
 ![Estructura](img/Grafeno.JPG){width=50%}
 
 

@@ -34,7 +34,7 @@
     "href": "2_grafeno.html",
     "title": "3  Grafeno",
     "section": "",
-    "text": "3.1 Supercelda de grafeno\nCuaderno de trabajo: Colab Google.\nMostrar código\n# Graphene supercell (4 atoms)\n\ngraphene_sc = graphene.make_supercell([[1, 0], [-1, 2]])\n\n#(fig,ax) = graphene_sc.visualize(0,1)\n#ax.set_title(\"Graphene (supercell)\")\n#ax.set_xlabel(\"x\")\n#ax.set_ylabel(\"y\")\n#fig.tight_layout()\n\n\n\nFigure 3.2",
+    "text": "3.1 Supercelda de grafeno\nCuaderno de trabajo: Colab Google.\nCuaderno de trabajo de la sesión Google Colab\nMostrar código\n# Graphene supercell (4 atoms)\n\ngraphene_sc = graphene.make_supercell([[1, 0], [-1, 2]])\n\n#(fig,ax) = graphene_sc.visualize(0,1)\n#ax.set_title(\"Graphene (supercell)\")\n#ax.set_xlabel(\"x\")\n#ax.set_ylabel(\"y\")\n#fig.tight_layout()\n\n\n\nFigure 3.2",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Grafeno</span>"
     ]
