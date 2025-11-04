@@ -1,5 +1,9 @@
 # Grafeno
 
+Cuaderno de trabajo: [Colab Google](https://colab.research.google.com/drive/1LBiC20jvHVA5is3h2WlANj9W2LVxVY7d?usp=sharing).
+
+![Estructura](img/Grafeno.JPG){width=50%}
+
 
 ```{python}
 #| label: fig-grafeno-pythtb
@@ -26,6 +30,8 @@ ax.set_xticklabels(klabels)
 ax.set_xlim(k_node[0],k_node[-1]);
 ```
 
+
+
 ## Supercelda de grafeno
 
 ```{python}
@@ -36,10 +42,10 @@ ax.set_xlim(k_node[0],k_node[-1]);
 
 graphene_sc = graphene.make_supercell([[1, 0], [-1, 2]])
 
-(fig,ax) = graphene_sc.visualize(0,1)
-ax.set_title("Graphene (supercell)")
-ax.set_xlabel("x")
-ax.set_ylabel("y")
-fig.tight_layout()
+#(fig,ax) = graphene_sc.visualize(0,1)
+#ax.set_title("Graphene (supercell)")
+#ax.set_xlabel("x")
+#ax.set_ylabel("y")
+#fig.tight_layout()
 ```
 

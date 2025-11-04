@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Grafeno – 3rdSPDM</title>
+<title>3&nbsp; Grafeno – 3rdSPDM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./3_haldane.html" rel="next">
-<link href="./1_basics.html" rel="prev">
+<link href="./1_tbh.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_grafeno.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grafeno</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_grafeno.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Grafeno</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -324,19 +324,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./1_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estructura cristalina (cristal)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_tbh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aproximación de amarre fuerte</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_grafeno.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grafeno</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Grafeno</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./3_haldane.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -355,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
-  <li><a href="#supercelda-de-grafeno" id="toc-supercelda-de-grafeno" class="nav-link active" data-scroll-target="#supercelda-de-grafeno"><span class="header-section-number">2.1</span> Supercelda de grafeno</a></li>
+  <li><a href="#supercelda-de-grafeno" id="toc-supercelda-de-grafeno" class="nav-link active" data-scroll-target="#supercelda-de-grafeno"><span class="header-section-number">3.1</span> Supercelda de grafeno</a></li>
   </ul>
 </nav>
     </div>
@@ -365,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Grafeno</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Grafeno</span></h1>
 </div>
 
 
@@ -382,6 +388,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Cuaderno de trabajo: <a href="https://colab.research.google.com/drive/1LBiC20jvHVA5is3h2WlANj9W2LVxVY7d?usp=sharing">Colab Google</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/Grafeno.JPG" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Estructura</figcaption>
+</figure>
+</div>
 <div id="cell-fig-grafeno-pythtb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Mostrar código</summary>
@@ -413,39 +426,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="2_grafeno_files/figure-html/fig-grafeno-pythtb-output-1.png" width="352" height="337" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-pythtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Ejemplo de estructura de bandas del grafeno (aproximación de amarre fuerte)
+Figure&nbsp;3.1: Ejemplo de estructura de bandas del grafeno (aproximación de amarre fuerte)
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="supercelda-de-grafeno" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="supercelda-de-grafeno"><span class="header-section-number">2.1</span> Supercelda de grafeno</h2>
-<div id="cell-fig-grafeno-supercell" class="cell" data-execution_count="2">
+<section id="supercelda-de-grafeno" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="supercelda-de-grafeno"><span class="header-section-number">3.1</span> Supercelda de grafeno</h2>
+<div id="fig-grafeno-supercell" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Graphene supercell (4 atoms)</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a>graphene_sc <span class="op">=</span> graphene.make_supercell([[<span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>]])</span>
 <span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>(fig,ax) <span class="op">=</span> graphene_sc.visualize(<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>ax.set_title(<span class="st">"Graphene (supercell)"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
-<span id="cb2-9"><a href="#cb2-9"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#(fig,ax) = graphene_sc.visualize(0,1)</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#ax.set_title("Graphene (supercell)")</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#ax.set_xlabel("x")</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#ax.set_ylabel("y")</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#fig.tight_layout()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display">
-<div id="fig-grafeno-supercell" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="2_grafeno_files/figure-html/fig-grafeno-supercell-output-1.png" width="660" height="660" class="figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Supercelda de grafeno
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2
 </figcaption>
 </figure>
-</div>
-</div>
 </div>
 
 
@@ -867,13 +875,13 @@ Figure&nbsp;2.2: Supercelda de grafeno
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./1_basics.html" class="pagination-link" aria-label="Conceptos básicos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos</span></span>
+      <a href="./1_tbh.html" class="pagination-link" aria-label="Aproximación de amarre fuerte">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aproximación de amarre fuerte</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./3_haldane.html" class="pagination-link" aria-label="Modelo de Haldane">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Modelo de Haldane</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

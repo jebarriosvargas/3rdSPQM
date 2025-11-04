@@ -1,1 +1,3 @@
 # Modelo de Haldane
+
+![Estructura](img/Haldane.JPG){width=50%}

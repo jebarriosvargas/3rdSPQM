@@ -32,11 +32,11 @@
   {
     "objectID": "2_grafeno.html",
     "href": "2_grafeno.html",
-    "title": "2  Grafeno",
+    "title": "3  Grafeno",
     "section": "",
-    "text": "2.1 Supercelda de grafeno\nMostrar código\n# Graphene supercell (4 atoms)\n\ngraphene_sc = graphene.make_supercell([[1, 0], [-1, 2]])\n\n(fig,ax) = graphene_sc.visualize(0,1)\nax.set_title(\"Graphene (supercell)\")\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\")\nfig.tight_layout()\n\n\n\n\n\n\n\n\nFigure 2.2: Supercelda de grafeno",
+    "text": "3.1 Supercelda de grafeno\nCuaderno de trabajo: Colab Google.\nMostrar código\n# Graphene supercell (4 atoms)\n\ngraphene_sc = graphene.make_supercell([[1, 0], [-1, 2]])\n\n#(fig,ax) = graphene_sc.visualize(0,1)\n#ax.set_title(\"Graphene (supercell)\")\n#ax.set_xlabel(\"x\")\n#ax.set_ylabel(\"y\")\n#fig.tight_layout()\n\n\n\nFigure 3.2",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Grafeno</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Grafeno</span>"
     ]
   },
   {
@@ -114,9 +114,19 @@
     "href": "1_tbh.html#sistema-extendido-cristal",
     "title": "2  Aproximación de amarre fuerte",
     "section": "2.2 Sistema extendido (cristal)",
-    "text": "2.2 Sistema extendido (cristal)\nEn los sistemas extendidos los orbitales base tienen una etiqueta más que corresponde al punto de red de la celda unitaria donde se encuentran dichos orbitales,\n\\[\\begin{align}\n\\phi_{\\vec{R},j} = \\phi_j(\\vec{r}-\\vec{R}-\\tau_j)\n\\end{align}\\]\ndonde \\(\\tau_j\\) es la posición del orbital relativa al vector de red \\(\\vec{R}\\). Supondrems de entrada la ortonormalidad,\n\\[\\begin{align}\n\\langle \\phi_{\\vec{R},i} | \\phi_{\\vec{R}',j} \\rangle =\\delta_{\\vec{R},\\vec{R}'}\\delta_{i,j}\n\\end{align}\\]\nLos elemntos de matriz del Hamiltoniano están dados por,\n\\[\\begin{align}\n\\langle \\phi_{\\vec{R},i} | H_{\\rm elec} |\\phi_{\\vec{R}',j} \\rangle = \\int d\\vec{r} \\bigg( \\phi_{\\vec{R},i}^*(\\vec{r}) H_{\\rm elec} \\phi_{\\vec{R}',j}(\\vec{r}) \\bigg)\n\\end{align}\\]\nIntroducimos la base tipo Bloch y calculamos los elementos de matriz,\n\n2.2.1 Convención I\n\\[\\begin{align}\n|\\chi_j^\\vec{k}\\rangle = \\sum_{\\vec{R}} e^{{\\rm i} \\vec{k}\\cdot (\\vec{R}+\\tau_j)}|\\phi_{\\vec{R},j}\\rangle\n\\end{align}\\]\nUtilizando la ortogonalidad por celda,\n\\[\\begin{align}\n\\langle \\chi_j^\\vec{k} | \\chi_j^\\vec{k} \\rangle\n\\end{align}\\]\n\n\n\n\nVanderbilt, David. 2018. Berry Phases in Electronic Structure Theory: Electric Polarization, Orbital Magnetization and Topological Insulators. Cambridge University Press.",
+    "text": "2.2 Sistema extendido (cristal)\nEn los sistemas extendidos los orbitales base tienen una etiqueta más que corresponde al punto de red de la celda unitaria donde se encuentran dichos orbitales,\n\\[\\begin{align}\n\\phi_{\\vec{R},j} = \\varphi_j(\\vec{r}-\\vec{R}-\\tau_j)\n\\end{align}\\]\ndonde \\(\\tau_j\\) es la posición del orbital relativa al vector de red \\(\\vec{R}\\). Supondrems de entrada la ortonormalidad,\n\\[\\begin{align}\n\\langle \\phi_{\\vec{R},i} | \\phi_{\\vec{R}',j} \\rangle =\\delta_{\\vec{R},\\vec{R}'}\\delta_{i,j}\n\\end{align}\\]\nLos elementos de matriz del Hamiltoniano están dados por,\n\\[\\begin{align}\n\\langle \\phi_{\\vec{R}',i} | H_{\\rm elec} |\\phi_{\\vec{R}'+\\vec{R},j} \\rangle &= \\int d\\vec{r} \\bigg( \\phi_{\\vec{R}',i}^*(\\vec{r}) H_{\\rm elec} \\phi_{\\vec{R}'+\\vec{R},j}(\\vec{r}) \\bigg) \\\\\n&= \\langle \\phi_{\\vec{0},i} | H_{\\rm elec} |\\phi_{\\vec{R},j} \\rangle = H_{ij}(\\vec{R})\n\\end{align}\\]\nDonde el último paso lo obtenemos por la simetría de traslación o equivalentemente al considerar \\(\\vec{R}'\\) el origen, \\(\\vec{R}'=\\vec{0}\\).\nIntroducimos la base tipo Bloch y calculamos los elementos de matriz,\n\n2.2.1 Convención I\n\\[\\begin{align}\n|\\chi_j^\\vec{k}\\rangle = \\sum_{\\vec{R}} e^{{\\rm i} \\vec{k}\\cdot (\\vec{R}+\\tau_j)}|\\phi_{\\vec{R},j}\\rangle\n\\end{align}\\]\n\\[\\begin{align}\nH_{ij}^{\\vec{k}} = \\langle \\chi_i^\\vec{k}|H_{\\rm elec}|\\chi_j^\\vec{k}\\rangle = \\sum_{\\vec{R}} e^{{\\rm i} \\vec{k}\\cdot (\\vec{R}+\\tau_j-\\tau_i)} H_{ij}(\\vec{R})\n\\end{align}\\]\nLa ecuación de eigenvalores a resolver es,\n\\[\\begin{align}\nH_{\\vec{k}} \\cdot C_{n\\vec{k}} = E_{n\\vec{k}} C_{n\\vec{k}}\n\\end{align}\\]\n\n\n2.2.2 Convención II\n\\[\\begin{align}\n|\\tilde{\\chi}_j^\\vec{k}\\rangle = \\sum_{\\vec{R}} e^{{\\rm i}\\vec{k}\\cdot \\vec{R}}|\\phi_{\\vec{R},j}\\rangle\n\\end{align}\\]\n\\[\\begin{align}\n\\tilde{H}_{ij}^{\\vec{k}} = \\langle \\tilde{\\chi}_i^\\vec{k}|H_{\\rm elec}|\\tilde{\\chi}_j^\\vec{k}\\rangle = \\sum_{\\vec{R}} e^{{\\rm i} \\vec{k}\\cdot \\vec{R}} H_{ij}(\\vec{R})\n\\end{align}\\]\nLa ecuación de eigenvalores a resolver es,\n\\[\\begin{align}\n\\tilde{H}_{\\vec{k}} \\cdot \\tilde{C}_{n\\vec{k}} = E_{n\\vec{k}} \\tilde{C}_{n\\vec{k}}\n\\end{align}\\]\n\n\n\n\n\n\nNoteRelación entre ambas convenciones\n\n\n\n\n\n\\[\\begin{align}\n\\tilde{H}_{ij}^\\vec{K} = e^{{\\rm i} e^{{\\rm i} \\vec{k} \\cdot (\\tau_i-\\tau_j)}} H_{ij}^{\\vec{k}}\n\\end{align}\\]\ny los coeficientes\n\\[\\begin{align}\n\\tilde{C}_j^{n\\vec{k}} = e^{{\\rm i} \\vec{k}\\cdot \\tau_j} C_{j}^{n\\vec{k}}\n\\end{align}\\]\nLas dos convenciones escencialmente están relacionadas por una rotación unitaria.\n\n\n\n\n\n\n\nVanderbilt, David. 2018. Berry Phases in Electronic Structure Theory: Electric Polarization, Orbital Magnetization and Topological Insulators. Cambridge University Press.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Aproximación de amarre fuerte</span>"
+    ]
+  },
+  {
+    "objectID": "3_haldane.html",
+    "href": "3_haldane.html",
+    "title": "4  Modelo de Haldane",
+    "section": "",
+    "text": "Estructura",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Modelo de Haldane</span>"
     ]
   }
 ]
