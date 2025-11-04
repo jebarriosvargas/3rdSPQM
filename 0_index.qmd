@@ -1,0 +1,6 @@
+# Prefacio {.unnumbered}
+
+Anotaciones del curso corto de *Hands-on tight-binding modeling: from bulk bands to edge states*. 
+
+Fecha: 4, 5 y 6 de noviembre de 2025 (15:00 - 16:00h)
+

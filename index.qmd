@@ -1,3 +1,0 @@
-# Prefacio {.unnumbered}
-
-Anotaciones del curso corto de *Hands-on tight-binding modeling: from bulk bands to edge states*.

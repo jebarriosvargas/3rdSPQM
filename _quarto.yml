@@ -9,9 +9,10 @@ book:
   author: "JEBV"
   date: "04/11/2025"
   chapters:
-    - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - 0_index.qmd
+    - 1_basics.qmd
+    - 2_grafeno.qmd
+    - 3_haldane.qmd
     - references.qmd
 
 bibliography: references.bib
