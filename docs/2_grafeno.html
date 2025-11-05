@@ -379,7 +379,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contenido</h2>
    
   <ul>
-  <li><a href="#supercelda-de-grafeno" id="toc-supercelda-de-grafeno" class="nav-link active" data-scroll-target="#supercelda-de-grafeno"><span class="header-section-number">3.1</span> Supercelda de grafeno</a></li>
+  <li><a href="#supercelda-de-grafeno" id="toc-supercelda-de-grafeno" class="nav-link active" data-scroll-target="#supercelda-de-grafeno"><span class="header-section-number">3.1</span> Supercelda de grafeno</a>
+  <ul class="collapse">
+  <li><a href="#zig-zag" id="toc-zig-zag" class="nav-link" data-scroll-target="#zig-zag"><span class="header-section-number">3.1.1</span> Zig-zag</a></li>
+  <li><a href="#armchair" id="toc-armchair" class="nav-link" data-scroll-target="#armchair"><span class="header-section-number">3.1.2</span> Armchair</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -407,14 +411,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Cuaderno de trabajo: <a href="https://colab.research.google.com/drive/1LBiC20jvHVA5is3h2WlANj9W2LVxVY7d?usp=sharing">Colab Google</a>.</p>
-<p>Cuaderno de trabajo de la sesión <a href="https://colab.research.google.com/drive/1aiQOBkq4y0R73CyNj10lXZUPxxavQ2X_?usp=sharing">Google Colab</a></p>
+<p>Cuaderno de trabajo de la sesión del lunes 5 de noviembre <a href="https://colab.research.google.com/drive/1aiQOBkq4y0R73CyNj10lXZUPxxavQ2X_?usp=sharing">Google Colab</a></p>
+<div id="fig-cristal" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cristal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/Grafeno.JPG" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Estructura</figcaption>
+<p><img src="img/Grafeno.JPG" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Celda primitiva</figcaption>
 </figure>
 </div>
-<div id="cell-fig-grafeno-pythtb" class="cell" data-execution_count="1">
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/IdDecorado.JPG" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Id del decorado</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/IdDecoradoCeldas.JPG" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Id de la celda</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cristal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Asignación de etiquetas.
+</figcaption>
+</figure>
+</div>
+<div id="fig-grafeno-pythtb" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grafeno-pythtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
@@ -425,57 +460,177 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6"></a>graphene <span class="op">=</span> tb_model(<span class="dv">2</span>, <span class="dv">2</span>, lattice, orbital)          <span class="co"># Two-dimensional TBH</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a>graphene.set_hop(<span class="op">-</span><span class="fl">1.0</span>, <span class="dv">0</span>, <span class="dv">1</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
 <span id="cb1-8"><a href="#cb1-8"></a>graphene.set_hop(<span class="op">-</span><span class="fl">1.0</span>, <span class="dv">1</span>, <span class="dv">0</span>, [ <span class="dv">1</span>, <span class="dv">0</span>])   <span class="co"># Define hopping between orbitals</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>graphene.set_hop(<span class="op">-</span><span class="fl">1.0</span>, <span class="dv">1</span>, <span class="dv">0</span>, [ <span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>kpoints <span class="op">=</span> [ [<span class="fl">0.0</span>, <span class="fl">0.0</span>], [<span class="fl">1.</span><span class="op">/</span><span class="fl">3.</span>, <span class="fl">2.</span><span class="op">/</span><span class="fl">3.</span>], [<span class="fl">0.5</span>, <span class="fl">0.5</span>] ] <span class="co"># Path in k-space</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>klabels <span class="op">=</span> [ <span class="vs">r"</span><span class="dv">$\G</span><span class="vs">amma</span><span class="dv">$</span><span class="vs">"</span>,     <span class="vs">r"</span><span class="dv">$</span><span class="vs">K</span><span class="dv">$</span><span class="vs">"</span>,         <span class="vs">r"</span><span class="dv">$</span><span class="vs">M</span><span class="dv">$</span><span class="vs">"</span>     ]</span>
-<span id="cb1-13"><a href="#cb1-13"></a>(k_vec,k_dist,k_node) <span class="op">=</span> graphene.k_path(kpoints, <span class="dv">100</span>,report<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-14"><a href="#cb1-14"></a>evals   <span class="op">=</span> graphene.solve_all(k_vec) <span class="co"># Solve model on k-path</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))            <span class="co"># Plot bandstructure</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>ax.plot(k_dist, evals[<span class="dv">0</span>,:], c<span class="op">=</span><span class="st">'k'</span>) </span>
-<span id="cb1-17"><a href="#cb1-17"></a>ax.plot(k_dist, evals[<span class="dv">1</span>,:], c<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb1-18"><a href="#cb1-18"></a>ax.set_xticks(k_node)</span>
-<span id="cb1-19"><a href="#cb1-19"></a>ax.set_xticklabels(klabels)</span>
-<span id="cb1-20"><a href="#cb1-20"></a>ax.set_xlim(k_node[<span class="dv">0</span>],k_node[<span class="op">-</span><span class="dv">1</span>])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-9"><a href="#cb1-9"></a>graphene.set_hop(<span class="op">-</span><span class="fl">1.0</span>, <span class="dv">1</span>, <span class="dv">0</span>, [ <span class="dv">0</span>, <span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-grafeno-pythtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2
+</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="img/1Bz.JPG" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:40.0%" alt="Primera zona de Brillouin"></p>
+</figure>
+</div>
+<div id="a606bf1a" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>kpoints <span class="op">=</span> [ [<span class="fl">0.0</span>, <span class="fl">0.0</span>], [<span class="fl">1.</span><span class="op">/</span><span class="fl">3.</span>, <span class="fl">2.</span><span class="op">/</span><span class="fl">3.</span>], [<span class="fl">0.5</span>, <span class="fl">0.5</span>] ] <span class="co"># Path in k-space</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>klabels <span class="op">=</span> [ <span class="vs">r"</span><span class="dv">$\G</span><span class="vs">amma</span><span class="dv">$</span><span class="vs">"</span>,     <span class="vs">r"</span><span class="dv">$</span><span class="vs">K</span><span class="dv">$</span><span class="vs">"</span>,         <span class="vs">r"</span><span class="dv">$</span><span class="vs">M</span><span class="dv">$</span><span class="vs">"</span>     ]</span>
+<span id="cb2-3"><a href="#cb2-3"></a>(k_vec,k_dist,k_node) <span class="op">=</span> graphene.k_path(kpoints, <span class="dv">100</span>,report<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>evals   <span class="op">=</span> graphene.solve_all(k_vec) <span class="co"># Solve model on k-path</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))            <span class="co"># Plot bandstructure</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>ax.plot(k_dist, evals[<span class="dv">0</span>,:], c<span class="op">=</span><span class="st">'k'</span>) </span>
+<span id="cb2-7"><a href="#cb2-7"></a>ax.plot(k_dist, evals[<span class="dv">1</span>,:], c<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>ax.set_xticks(k_node)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>ax.set_xticklabels(klabels)</span>
+<span id="cb2-10"><a href="#cb2-10"></a>ax.set_xlim(k_node[<span class="dv">0</span>],k_node[<span class="op">-</span><span class="dv">1</span>])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-grafeno-pythtb" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grafeno-pythtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="2_grafeno_files/figure-html/fig-grafeno-pythtb-output-1.png" width="352" height="337" class="figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-pythtb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Ejemplo de estructura de bandas del grafeno (aproximación de amarre fuerte)
-</figcaption>
+<div>
+<figure class="figure">
+<p><img src="2_grafeno_files/figure-html/cell-3-output-1.png" width="352" height="337" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <section id="supercelda-de-grafeno" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="supercelda-de-grafeno"><span class="header-section-number">3.1</span> Supercelda de grafeno</h2>
-<div id="fig-grafeno-supercell" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="2">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="cell-fig-grafeno-supercell" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Mostrar código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Graphene supercell (4 atoms)</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>graphene_sc <span class="op">=</span> graphene.make_supercell([[<span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>]])</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#(fig,ax) = graphene_sc.visualize(0,1)</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#ax.set_title("Graphene (supercell)")</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#ax.set_xlabel("x")</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#ax.set_ylabel("y")</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#fig.tight_layout()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>mpl.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="fl">2.5</span>,<span class="fl">2.5</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Graphene supercell (4 atoms)</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>graphene_sc <span class="op">=</span> graphene.make_supercell([[<span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>]])</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>(fig,ax) <span class="op">=</span> graphene_sc.visualize(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>ax.set_title(<span class="st">"Graphene (supercell)"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-display">
+<div id="fig-grafeno-supercell" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2_grafeno_files/figure-html/fig-grafeno-supercell-output-1.png" width="214" height="228" class="figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-supercell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Supercelda de grafeno
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<section id="zig-zag" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="zig-zag"><span class="header-section-number">3.1.1</span> Zig-zag</h3>
+<div id="cell-fig-grafeno-zigzag" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>ribbon_zz <span class="op">=</span> graphene_sc.cut_piece(<span class="dv">4</span>,<span class="dv">1</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>(fig,ax) <span class="op">=</span> ribbon_zz.visualize(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>ax.set_title(<span class="st">"Ribon (zig-zag)"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-grafeno-zigzag" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grafeno-zigzag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2_grafeno_files/figure-html/fig-grafeno-zigzag-output-1.png" width="204" height="228" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-zigzag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: Liston Zig-zag
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-grafeno-zigzag-bandas" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>kpath <span class="op">=</span> [[<span class="dv">0</span>],[<span class="dv">1</span>]]</span>
+<span id="cb5-2"><a href="#cb5-2"></a>(k_vec,k_dist,k_node) <span class="op">=</span> ribbon_zz.k_path(kpath, <span class="dv">100</span>,report<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>Ek <span class="op">=</span> ribbon_zz.solve_all(k_vec)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>(fig,ax) <span class="op">=</span> plt.subplots()</span>
+<span id="cb5-5"><a href="#cb5-5"></a>ax.plot(k_dist,Ek.T,c<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>ax.set_xticks(k_node)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>ax.set_ylabel(<span class="st">"Ek"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>ax.set_xlabel(<span class="st">"k"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-grafeno-zigzag-bandas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grafeno-zigzag-bandas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2_grafeno_files/figure-html/fig-grafeno-zigzag-bandas-output-1.png" width="229" height="228" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-zigzag-bandas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.5: Bandas Zig-zag
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="armchair" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="armchair"><span class="header-section-number">3.1.2</span> Armchair</h3>
+<div id="cell-fig-grafeno-armchair" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>armchair <span class="op">=</span> graphene_sc.cut_piece(<span class="dv">4</span>,<span class="dv">0</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>(fig,ax) <span class="op">=</span> armchair.visualize(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>ax.set_title(<span class="st">"Ribon (armchair)"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-grafeno-armchair" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grafeno-armchair-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2_grafeno_files/figure-html/fig-grafeno-armchair-output-1.png" width="215" height="228" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-armchair-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.6: Liston Armchair
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-grafeno-armchair-bandas" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>kpath <span class="op">=</span> [[<span class="dv">0</span>],[<span class="dv">1</span>]]</span>
+<span id="cb7-2"><a href="#cb7-2"></a>(k_vec,k_dist,k_node) <span class="op">=</span> armchair.k_path(kpath, <span class="dv">100</span>,report<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>Ek <span class="op">=</span> armchair.solve_all(k_vec)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>(fig,ax) <span class="op">=</span> plt.subplots()</span>
+<span id="cb7-5"><a href="#cb7-5"></a>ax.plot(k_dist,Ek.T,c<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>ax.set_xticks(k_node)</span>
+<span id="cb7-7"><a href="#cb7-7"></a>ax.set_ylabel(<span class="st">"Ek"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8"></a>ax.set_xlabel(<span class="st">"k"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-grafeno-armchair-bandas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grafeno-armchair-bandas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="2_grafeno_files/figure-html/fig-grafeno-armchair-bandas-output-1.png" width="231" height="228" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grafeno-armchair-bandas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.7: Bandas armchair
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

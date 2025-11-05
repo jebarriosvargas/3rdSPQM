@@ -390,4 +390,4 @@ $$
 B = 2\pi A^{-1}
 $$
 
-![Red recíproca](img/1BZ.png){width=50%}
+![Red recíproca](img/1Bz.png){width=50%}

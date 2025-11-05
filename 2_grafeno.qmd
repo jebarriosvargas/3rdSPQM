@@ -2,10 +2,18 @@
 
 Cuaderno de trabajo: [Colab Google](https://colab.research.google.com/drive/1LBiC20jvHVA5is3h2WlANj9W2LVxVY7d?usp=sharing).
 
-Cuaderno de trabajo de la sesión [Google Colab](https://colab.research.google.com/drive/1aiQOBkq4y0R73CyNj10lXZUPxxavQ2X_?usp=sharing)
+Cuaderno de trabajo de la sesión del lunes 5 de noviembre [Google Colab](https://colab.research.google.com/drive/1aiQOBkq4y0R73CyNj10lXZUPxxavQ2X_?usp=sharing)
 
-![Estructura](img/Grafeno.JPG){width=50%}
 
+::: {#fig-cristal layout-ncol=3}
+![Celda primitiva](img/Grafeno.JPG){width=100%}
+
+![Id del decorado](img/IdDecorado.JPG){width=100%}
+
+![Id de la celda](img/IdDecoradoCeldas.JPG){width=100%}
+
+Asignación de etiquetas.
+::: 
 
 ```{python}
 #| label: fig-grafeno-pythtb
@@ -20,6 +28,11 @@ graphene.set_hop(-1.0, 0, 1, [ 0, 0])
 graphene.set_hop(-1.0, 1, 0, [ 1, 0])   # Define hopping between orbitals
 graphene.set_hop(-1.0, 1, 0, [ 0, 1])
 
+```
+![](img/1Bz.JPG){fig-alt="Primera zona de Brillouin" fig-align="left" width=40%}
+
+
+```{python}
 kpoints = [ [0.0, 0.0], [1./3., 2./3.], [0.5, 0.5] ] # Path in k-space
 klabels = [ r"$\Gamma$",     r"$K$",         r"$M$"     ]
 (k_vec,k_dist,k_node) = graphene.k_path(kpoints, 100,report=False)
@@ -40,14 +53,75 @@ ax.set_xlim(k_node[0],k_node[-1]);
 #| label: fig-grafeno-supercell
 #| fig-cap: "Supercelda de grafeno"
 
+mpl.rcParams['figure.figsize'] = (2.5,2.5)
+
 # Graphene supercell (4 atoms)
 
 graphene_sc = graphene.make_supercell([[1, 0], [-1, 2]])
 
-#(fig,ax) = graphene_sc.visualize(0,1)
-#ax.set_title("Graphene (supercell)")
-#ax.set_xlabel("x")
-#ax.set_ylabel("y")
-#fig.tight_layout()
+(fig,ax) = graphene_sc.visualize(0,1)
+ax.set_title("Graphene (supercell)")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+fig.tight_layout()
 ```
 
+
+### Zig-zag
+
+```{python}
+#| label: fig-grafeno-zigzag
+#| fig-cap: "Liston Zig-zag"
+
+ribbon_zz = graphene_sc.cut_piece(4,1)
+(fig,ax) = ribbon_zz.visualize(0,1)
+ax.set_title("Ribon (zig-zag)")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+fig.tight_layout()
+```
+
+```{python}
+#| label: fig-grafeno-zigzag-bandas
+#| fig-cap: "Bandas Zig-zag"
+
+kpath = [[0],[1]]
+(k_vec,k_dist,k_node) = ribbon_zz.k_path(kpath, 100,report=False)
+Ek = ribbon_zz.solve_all(k_vec)
+(fig,ax) = plt.subplots()
+ax.plot(k_dist,Ek.T,c='k')
+ax.set_xticks(k_node)
+ax.set_ylabel("Ek")
+ax.set_xlabel("k")
+fig.tight_layout()
+```
+
+
+### Armchair
+
+```{python}
+#| label: fig-grafeno-armchair
+#| fig-cap: "Liston Armchair"
+
+armchair = graphene_sc.cut_piece(4,0)
+(fig,ax) = armchair.visualize(0,1)
+ax.set_title("Ribon (armchair)")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+fig.tight_layout()
+```
+
+```{python}
+#| label: fig-grafeno-armchair-bandas
+#| fig-cap: "Bandas armchair"
+
+kpath = [[0],[1]]
+(k_vec,k_dist,k_node) = armchair.k_path(kpath, 100,report=False)
+Ek = armchair.solve_all(k_vec)
+(fig,ax) = plt.subplots()
+ax.plot(k_dist,Ek.T,c='k')
+ax.set_xticks(k_node)
+ax.set_ylabel("Ek")
+ax.set_xlabel("k")
+fig.tight_layout()
+```
