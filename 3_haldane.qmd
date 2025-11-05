@@ -2,11 +2,16 @@
 
 Cuaderno de trabajo: [Colab Google](https://colab.research.google.com/drive/1qBlxvpRSEpX9eoeBX-4lMkxvycw_yYHv?usp=sharing)
 
+
+Referencia: 
+Phys. Rev. Lett. 61, 2015 – Published 31 October, 1988
+DOI: [https://doi.org/10.1103/PhysRevLett.61.2015](https://doi.org/10.1103/PhysRevLett.61.2015)
+
 ::: {#fig-haldane layout-ncol=3}
 
-![Estructura](img/Haldane.JPG){width=100%}
+![Estructura](img/Haldane.JPG){width=92%}
 
-![Id de](img/IdAtomos.JPG){width=100%}
+![Id del decorado](img/IdAtomos.JPG){width=100%}
 
 ![Hopp. complejos](img/hoppComplejos.JPG){width=100%}
 
@@ -24,7 +29,7 @@ mpl.rcParams['figure.figsize'] = (2.5,2.5)
 lattice = [ [1.0, 0.0],    [1./2., sqrt(3.0)/2.0] ]  # Lattice vectors and 
 orbital = [ [1/3., 1./3.], [2./3., 2./3.] ]          # Orbital positions
 haldane = tb_model(2, 2, lattice, orbital)          # Two-dimensional TBH
-t1,t2,φ = 1,1/3,pi/2
+t1,t2,φ,M = 1,1/12,pi/2,1/3
 
 haldane.set_hop(-1.0, 0, 1, [ 0, 0])
 haldane.set_hop(-1.0, 1, 0, [ 1, 0])   # Define hopping between orbitals
@@ -34,9 +39,194 @@ haldane.set_hop(t2*exp(1J*φ),0,0,[1,0])
 haldane.set_hop(t2*exp(-1J*φ),0,0,[1,-1])
 haldane.set_hop(t2*exp(1J*φ),0,0,[0,-1])
 
+haldane.set_hop(t2*exp(1J*φ),1,1,[-1,0])
+haldane.set_hop(t2*exp(-1J*φ),1,1,[-1,1])
+haldane.set_hop(t2*exp(1J*φ),1,1,[0,1])
+
+haldane.set_onsite([M,-M])
+
 haldane.visualize(0,1)
+```
+
+## Estructura de bandas del bulto
+
+```{python}
+kpoints = [ [0.0, 0.0], [1./3., 2./3.], [0.5, 0.5],[2/3,1/3],[0,0] ] # Path in k-space
+klabels = [ r"$\Gamma$",     r"$K$",         r"$M$", r"K'" ,  r"$\Gamma$"  ]
+(k_vec,k_dist,k_node) = haldane.k_path(kpoints, 100,report=False)
+evals   = haldane.solve_all(k_vec) # Solve model on k-path
+fig, ax = plt.subplots(figsize=(4,4))            # Plot bandstructure
+ax.plot(k_dist, evals[0,:], c='k') 
+ax.plot(k_dist, evals[1,:], c='k')
+ax.set_xticks(k_node)
+ax.set_xticklabels(klabels)
+ax.set_xlim(k_node[0],k_node[-1])
+ax.set_ylabel("Ek");
+```
+
+## Diagrama de fases (paper Haldane)
+
+![Fases Haldane. Phase diagram of the spinless electron model with $|t_2/t_1|<1/3$.](img/FasesHaldane.png){width=75%}
+
+## Supercelda
+
+```{python}
+sc = haldane.make_supercell([[1,0],[-1,2]])
+
+sc.visualize(0,1)
+```
+
+### Zig-zag
+
+```{python}
+zigzag = sc.cut_piece(10,1)
+
+zigzag.visualize(0,1)
+```
+
+```{python}
+#| label: fig-grafeno-zigzag-bandas-h
+#| fig-cap: "Bandas Zig-zag"
+
+kpath = [[0],[1]]
+(k_vec,k_dist,k_node) = zigzag.k_path(kpath, 100,report=False)
+Ek = zigzag.solve_all(k_vec)
+(fig,ax) = plt.subplots()
+ax.plot(k_dist,Ek.T,c='k')
+ax.set_xticks(k_node)
+ax.set_ylabel("Ek")
+ax.set_xlabel("k")
+fig.tight_layout()
+```
+
+### Armchair
+
+```{python}
+armchair = sc.cut_piece(10,0)
+
+armchair.visualize(0,1)
+```
+
+```{python}
+#| label: fig-grafeno-armchair-bandas-h
+#| fig-cap: "Bandas armchair"
+
+kpath = [[-0.5],[0.5]]
+(k_vec,k_dist,k_node) = armchair.k_path(kpath, 100,report=False)
+Ek = armchair.solve_all(k_vec)
+(fig,ax) = plt.subplots()
+ax.plot(k_dist,Ek.T,c='k')
+ax.set_xticks(k_node)
+ax.set_ylabel("Ek")
+ax.set_xlabel("k")
+fig.tight_layout()
+```
+
+
+
+## Relación de dispersión
+
+```{python}
+nkp = 100
+kpts = haldane.k_uniform_mesh((nkp,nkp))
+
+Ek,U = haldane.solve_all(kpts,eig_vectors=True)
+
+b1,b2 = haldane.get_lat()
+bvec  = array([b1,b2])
+KX,KY = dot( bvec, kpts.T  )
+
+# Con el fin de graficar
+KX = KX.reshape(nkp,nkp)
+KY = KY.reshape(nkp,nkp)
+
+
+Ekband_0 = Ek[0].reshape(nkp,nkp)
+Ekband_1 = Ek[1].reshape(nkp,nkp)
+
+
+```
+
+```{python}
+
+import plotly.graph_objects as go
+
+DATA = [go.Surface(z=Ekband_0, x=KX, y=KY,showscale=False),
+go.Surface(z=Ekband_1, x=KX, y=KY,showscale=False)]
+
+fig = go.Figure( data=DATA )
+fig.show()
 
 ```
 
 
-![Fases Haldane. Phase diagram of the spinless electron model with $|t_2/t_1|<1/3$.](img/FasesHaldane.png){width=75%}
+## Curvatura de Berry
+
+```{python}
+
+U0 = U[0].reshape(nkp,nkp,2)
+U1 = U[1].reshape(nkp,nkp,2)
+
+F = zeros((nkp-1,nkp-1),dtype="complex")
+for n in range(nkp-1):
+  for m in range(nkp-1):
+    F[n,m] = vdot(U0[n+0,m+0],U0[n+1,m+0]) \
+            *vdot(U0[n+1,m+0],U0[n+1,m+1]) \
+            *vdot(U0[n+1,m+1],U0[n+0,m+1]) \
+            *vdot(U0[n+0,m+1],U0[n+0,m+0])
+
+
+G = zeros((nkp-1,nkp-1),dtype="complex")
+for n in range(nkp-1):
+  for m in range(nkp-1):
+    G[n,m] = vdot(U1[n+0,m+0],U1[n+1,m+0]) \
+            *vdot(U1[n+1,m+0],U1[n+1,m+1]) \
+            *vdot(U1[n+1,m+1],U1[n+0,m+1]) \
+            *vdot(U1[n+0,m+1],U1[n+0,m+0])
+
+```
+
+```{python}
+
+kx_new = KX[:-1,:-1]
+ky_new = KY[:-1,:-1]
+angF   = angle(F)
+angG   = angle(G)
+
+
+fig, ax = plt.subplots(figsize=(6,6))
+maximo = abs(angF).max()
+dots = ax.scatter(kx_new, ky_new, c=angF, s=1,cmap="coolwarm",vmin=-maximo,vmax=maximo) #,vmin=-pi,vmax=pi,cmap="coolwarm")
+#ax.set_ylim( -Δky/2,Δky/2 )
+#ax.set_xlim( 0,Δky )
+ax.set_xlabel(r"$k_x$")
+ax.set_ylabel(r"$k_y$")
+fig.colorbar(dots)
+#plt.show()
+
+```
+
+
+## Estados de borde
+
+```{python}
+
+fin_model = zigzag.cut_piece(10,0)
+
+(evals,evecs) = fin_model.solve_all(eig_vectors=True)
+# Determinamos el índice del eigenestado de enmedio
+ef = fin_model.get_num_orbitals()//2
+
+# Figura del eigenestado de enmedio
+# pythtb tiene una opción de visualizar la red y algún eigenestado
+(fig,ax) = fin_model.visualize( 0,1, eig_dr=evecs[ef,:], draw_hoppings=False)
+# Colocamos un título a la gráfica
+ax.set_title("Estado de borde de una red finita sin condiciones periódicas");
+
+```
+
+```{python}
+(fig,ax) = fin_model.visualize( 0,1, eig_dr=evecs[ef-1,:], draw_hoppings=False)
+# Colocamos un título a la gráfica
+ax.set_title("Estado de borde de una red finita sin condiciones periódicas");
+```

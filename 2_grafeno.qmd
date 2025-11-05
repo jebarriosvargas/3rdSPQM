@@ -28,6 +28,7 @@ graphene.set_hop(-1.0, 0, 1, [ 0, 0])
 graphene.set_hop(-1.0, 1, 0, [ 1, 0])   # Define hopping between orbitals
 graphene.set_hop(-1.0, 1, 0, [ 0, 1])
 
+
 ```
 ![](img/1Bz.JPG){fig-alt="Primera zona de Brillouin" fig-align="left" width=40%}
 
