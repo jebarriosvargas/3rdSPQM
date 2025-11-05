@@ -2,7 +2,41 @@
 
 Cuaderno de trabajo: [Colab Google](https://colab.research.google.com/drive/1qBlxvpRSEpX9eoeBX-4lMkxvycw_yYHv?usp=sharing)
 
-![Estructura](img/Haldane.JPG){width=50%}
+::: {#fig-haldane layout-ncol=3}
+
+![Estructura](img/Haldane.JPG){width=100%}
+
+![Id de](img/IdAtomos.JPG){width=100%}
+
+![Hopp. complejos](img/hoppComplejos.JPG){width=100%}
+
+Asignación de etiquetas.
+:::
+
+```{python}
+#| label: fig-Haldane-pythtb
+#| fig-cap: "Ejemplo de estructura de bandas del grafeno (aproximación de amarre fuerte)"
+from pylab import *
+from pythtb import *
+
+mpl.rcParams['figure.figsize'] = (2.5,2.5)
+
+lattice = [ [1.0, 0.0],    [1./2., sqrt(3.0)/2.0] ]  # Lattice vectors and 
+orbital = [ [1/3., 1./3.], [2./3., 2./3.] ]          # Orbital positions
+haldane = tb_model(2, 2, lattice, orbital)          # Two-dimensional TBH
+t1,t2,φ = 1,1/3,pi/2
+
+haldane.set_hop(-1.0, 0, 1, [ 0, 0])
+haldane.set_hop(-1.0, 1, 0, [ 1, 0])   # Define hopping between orbitals
+haldane.set_hop(-1.0, 1, 0, [ 0, 1])
+
+haldane.set_hop(t2*exp(1J*φ),0,0,[1,0])
+haldane.set_hop(t2*exp(-1J*φ),0,0,[1,-1])
+haldane.set_hop(t2*exp(1J*φ),0,0,[0,-1])
+
+haldane.visualize(0,1)
+
+```
 
 
 ![Fases Haldane. Phase diagram of the spinless electron model with $|t_2/t_1|<1/3$.](img/FasesHaldane.png){width=75%}
