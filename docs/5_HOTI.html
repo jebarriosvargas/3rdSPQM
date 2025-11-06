@@ -374,8 +374,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenido</h2>
+   
+  <ul>
+  <li><a href="#modelo-finito" id="toc-modelo-finito" class="nav-link active" data-scroll-target="#modelo-finito"><span class="header-section-number">6.1</span> Modelo finito</a>
+  <ul class="collapse">
+  <li><a href="#espectro" id="toc-espectro" class="nav-link" data-scroll-target="#espectro"><span class="header-section-number">6.1.1</span> Espectro</a></li>
+  <li><a href="#estados-localizados-en-las-esquinas" id="toc-estados-localizados-en-las-esquinas" class="nav-link" data-scroll-target="#estados-localizados-en-las-esquinas"><span class="header-section-number">6.1.2</span> Estados localizados en las esquinas</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -400,7 +410,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="8e80a9c9" class="cell" data-execution_count="1">
+<p>Wladimir A. Benalcazar et al.&nbsp;,Quantized electric multipole insulators.Science357,61-66(2017). DOI: <a href="https://doi.org/10.1126/science.aah6442">10.1126/science.aah6442</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/HOTI_image.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Modelo HOTI</figcaption>
+</figure>
+</div>
+<div id="80c531b5" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
@@ -408,29 +425,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a>mpl.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="fl">2.5</span>,<span class="fl">2.5</span>)</span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>δ    <span class="op">=</span> <span class="fl">1e-6</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>cint <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>cext <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a>lat  <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]]</span>
-<span id="cb1-11"><a href="#cb1-11"></a>orb  <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="fl">0.5</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="fl">0.5</span>],[<span class="fl">0.5</span>,<span class="fl">0.5</span>]]</span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a>HOTI <span class="op">=</span> tb_model(<span class="dv">2</span>, <span class="dv">2</span>, lat, orb)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>cint <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>cext <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>lat  <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]]</span>
+<span id="cb1-10"><a href="#cb1-10"></a>orb  <span class="op">=</span> [[<span class="dv">0</span>,<span class="dv">0</span>],[<span class="fl">0.5</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="fl">0.5</span>],[<span class="fl">0.5</span>,<span class="fl">0.5</span>]]</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>HOTI <span class="op">=</span> tb_model(<span class="dv">2</span>, <span class="dv">2</span>, lat, orb)</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
 <span id="cb1-14"><a href="#cb1-14"></a></span>
-<span id="cb1-15"><a href="#cb1-15"></a>HOTI.set_onsite( [δ, <span class="op">-</span>δ, δ, <span class="op">-</span>δ] )</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a>HOTI.set_hop(           cint, <span class="dv">0</span>, <span class="dv">1</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb1-18"><a href="#cb1-18"></a>HOTI.set_hop(exp(<span class="ot">1J</span><span class="op">*</span>pi)<span class="op">*</span>cint, <span class="dv">0</span>, <span class="dv">2</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb1-19"><a href="#cb1-19"></a>HOTI.set_hop(           cint, <span class="dv">1</span>, <span class="dv">3</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb1-20"><a href="#cb1-20"></a>HOTI.set_hop(           cint, <span class="dv">2</span>, <span class="dv">3</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a>HOTI.set_hop(           cext, <span class="dv">0</span>, <span class="dv">1</span>, [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>])</span>
-<span id="cb1-23"><a href="#cb1-23"></a>HOTI.set_hop(           cext, <span class="dv">0</span>, <span class="dv">2</span>, [ <span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb1-24"><a href="#cb1-24"></a>HOTI.set_hop(exp(<span class="ot">1J</span><span class="op">*</span>pi)<span class="op">*</span>cext, <span class="dv">1</span>, <span class="dv">3</span>, [ <span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb1-25"><a href="#cb1-25"></a>HOTI.set_hop(           cext, <span class="dv">2</span>, <span class="dv">3</span>, [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-15"><a href="#cb1-15"></a>HOTI.set_hop(           cint, <span class="dv">0</span>, <span class="dv">1</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb1-16"><a href="#cb1-16"></a>HOTI.set_hop(exp(<span class="ot">1J</span><span class="op">*</span>pi)<span class="op">*</span>cint, <span class="dv">0</span>, <span class="dv">2</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb1-17"><a href="#cb1-17"></a>HOTI.set_hop(           cint, <span class="dv">1</span>, <span class="dv">3</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb1-18"><a href="#cb1-18"></a>HOTI.set_hop(           cint, <span class="dv">2</span>, <span class="dv">3</span>, [ <span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a>HOTI.set_hop(           cext, <span class="dv">0</span>, <span class="dv">1</span>, [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb1-21"><a href="#cb1-21"></a>HOTI.set_hop(           cext, <span class="dv">0</span>, <span class="dv">2</span>, [ <span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb1-22"><a href="#cb1-22"></a>HOTI.set_hop(exp(<span class="ot">1J</span><span class="op">*</span>pi)<span class="op">*</span>cext, <span class="dv">1</span>, <span class="dv">3</span>, [ <span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb1-23"><a href="#cb1-23"></a>HOTI.set_hop(           cext, <span class="dv">2</span>, <span class="dv">3</span>, [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="f9bb5731" class="cell" data-execution_count="2">
+<section id="modelo-finito" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="modelo-finito"><span class="header-section-number">6.1</span> Modelo finito</h2>
+<div id="b9cd6d75" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>Nx,Ny <span class="op">=</span> <span class="dv">4</span>,<span class="dv">4</span></span>
@@ -439,7 +456,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4"></a>(evals,evecs) <span class="op">=</span> HOTI_square.solve_all(eig_vectors<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="37fc02de" class="cell" data-execution_count="3">
+<section id="espectro" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="espectro"><span class="header-section-number">6.1.1</span> Espectro</h3>
+<div id="c7c0a0eb" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>hlines(evals,xmin<span class="op">=</span><span class="fl">0.1</span>,xmax<span class="op">=</span><span class="fl">0.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -452,7 +471,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="c640ddd0" class="cell" data-execution_count="4">
+</section>
+<section id="estados-localizados-en-las-esquinas" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="estados-localizados-en-las-esquinas"><span class="header-section-number">6.1.2</span> Estados localizados en las esquinas</h3>
+<div id="3cf66968" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> local_DOS_one_eigen(Ek,U,n):</span>
@@ -460,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3"></a>    <span class="cf">return</span> real(S)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="bb61bd3d" class="cell" data-execution_count="5">
+<div id="5a49e553" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>ed<span class="op">=</span>HOTI_square.get_num_orbitals()<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">2</span></span>
@@ -478,8 +500,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div id="c8f65fa9" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>ed<span class="op">=</span>HOTI_square.get_num_orbitals()<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>(fig,ax)<span class="op">=</span>HOTI_square.visualize(<span class="dv">0</span>,<span class="dv">1</span>,eig_dr<span class="op">=</span>evecs[ed,:],draw_hoppings<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>ax.set_title(<span class="st">"E=</span><span class="sc">{0:.1e}</span><span class="st">"</span>.<span class="bu">format</span>(evals[ed]))</span>
+<span id="cb6-4"><a href="#cb6-4"></a>ax.set_xlabel(<span class="st">"x coordinate"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>ax.set_ylabel(<span class="st">"y coordinate"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_HOTI_files/figure-html/cell-7-output-1.png" width="204" height="228" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="793b0268" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>ed<span class="op">=</span>HOTI_square.get_num_orbitals()<span class="op">//</span><span class="dv">2</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>(fig,ax)<span class="op">=</span>HOTI_square.visualize(<span class="dv">0</span>,<span class="dv">1</span>,eig_dr<span class="op">=</span>evecs[ed,:],draw_hoppings<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>ax.set_title(<span class="st">"E=</span><span class="sc">{0:.1e}</span><span class="st">"</span>.<span class="bu">format</span>(evals[ed]))</span>
+<span id="cb7-4"><a href="#cb7-4"></a>ax.set_xlabel(<span class="st">"x coordinate"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>ax.set_ylabel(<span class="st">"y coordinate"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_HOTI_files/figure-html/cell-8-output-1.png" width="204" height="228" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="9022ab8c" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>ed<span class="op">=</span>HOTI_square.get_num_orbitals()<span class="op">//</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>(fig,ax)<span class="op">=</span>HOTI_square.visualize(<span class="dv">0</span>,<span class="dv">1</span>,eig_dr<span class="op">=</span>evecs[ed,:],draw_hoppings<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>ax.set_title(<span class="st">"E=</span><span class="sc">{0:.1e}</span><span class="st">"</span>.<span class="bu">format</span>(evals[ed]))</span>
+<span id="cb8-4"><a href="#cb8-4"></a>ax.set_xlabel(<span class="st">"x coordinate"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a>ax.set_ylabel(<span class="st">"y coordinate"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5_HOTI_files/figure-html/cell-9-output-1.png" width="204" height="228" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

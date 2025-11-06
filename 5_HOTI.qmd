@@ -1,6 +1,11 @@
 # Aislates topológicos de orden superior
 
 
+Wladimir A. Benalcazar et al. ,Quantized electric multipole insulators.Science357,61-66(2017). DOI: [10.1126/science.aah6442](https://doi.org/10.1126/science.aah6442).
+
+![Modelo HOTI](img/HOTI_image.png){width=50%}
+
+
 ```{python}
 
 from pylab import *
@@ -8,7 +13,6 @@ from pythtb import *
 
 mpl.rcParams['figure.figsize'] = (2.5,2.5)
 
-δ    = 1e-6
 cint = 1
 cext = 2
 
@@ -17,7 +21,6 @@ orb  = [[0,0],[0.5,0],[0,0.5],[0.5,0.5]]
 
 HOTI = tb_model(2, 2, lat, orb)
 
-HOTI.set_onsite( [δ, -δ, δ, -δ] )
 
 HOTI.set_hop(           cint, 0, 1, [ 0, 0])
 HOTI.set_hop(exp(1J*pi)*cint, 0, 2, [ 0, 0])
@@ -30,6 +33,8 @@ HOTI.set_hop(exp(1J*pi)*cext, 1, 3, [ 0,-1])
 HOTI.set_hop(           cext, 2, 3, [-1, 0])
 
 ```
+
+## Modelo finito
 ```{python}
 Nx,Ny = 4,4
 HOTI_slab     =      HOTI.cut_piece(Nx,0,glue_edgs=False)
@@ -37,11 +42,14 @@ HOTI_square   = HOTI_slab.cut_piece(Ny,1,glue_edgs=False)
 (evals,evecs) = HOTI_square.solve_all(eig_vectors=True)
 ```
 
+### Espectro
 ```{python}
 
 hlines(evals,xmin=0.1,xmax=0.2)
 
 ```
+
+### Estados localizados en las esquinas
 
 ```{python}
 def local_DOS_one_eigen(Ek,U,n):
@@ -53,6 +61,34 @@ def local_DOS_one_eigen(Ek,U,n):
 ed=HOTI_square.get_num_orbitals()//2-2
 (fig,ax)=HOTI_square.visualize(0,1,eig_dr=evecs[ed,:],draw_hoppings=True)
 ax.set_title("E={0:.2e}".format(evals[ed]))
+ax.set_xlabel("x coordinate")
+ax.set_ylabel("y coordinate")
+fig.tight_layout()
+```
+
+
+```{python}
+ed=HOTI_square.get_num_orbitals()//2-1
+(fig,ax)=HOTI_square.visualize(0,1,eig_dr=evecs[ed,:],draw_hoppings=True)
+ax.set_title("E={0:.1e}".format(evals[ed]))
+ax.set_xlabel("x coordinate")
+ax.set_ylabel("y coordinate")
+fig.tight_layout()
+```
+
+```{python}
+ed=HOTI_square.get_num_orbitals()//2
+(fig,ax)=HOTI_square.visualize(0,1,eig_dr=evecs[ed,:],draw_hoppings=True)
+ax.set_title("E={0:.1e}".format(evals[ed]))
+ax.set_xlabel("x coordinate")
+ax.set_ylabel("y coordinate")
+fig.tight_layout()
+```
+
+```{python}
+ed=HOTI_square.get_num_orbitals()//2+1
+(fig,ax)=HOTI_square.visualize(0,1,eig_dr=evecs[ed,:],draw_hoppings=True)
+ax.set_title("E={0:.1e}".format(evals[ed]))
 ax.set_xlabel("x coordinate")
 ax.set_ylabel("y coordinate")
 fig.tight_layout()
