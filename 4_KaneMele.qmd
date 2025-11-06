@@ -1,1 +1,226 @@
 # Modelo Kane-Mele
+
+
+
+
+```{python}
+
+from pythtb import *
+from pylab import *
+
+mpl.rcParams['figure.figsize'] = (3.0,3.0)
+
+def KaneMele(λI=0.06,M=0.3,λR=0.05,t1=1,t2=0):
+
+  a1=np.array([1,0])
+  a2=np.array([1/2,sqrt(3)/2])
+
+  lat=np.array([a1,a2])
+  orb=[[1/3,1/3],[2/3,2/3], # Haldane model spin up
+      [1/3,1/3],[2/3,2/3]]  # Haldane model spin down
+
+  KM=tb_model(2,2,lat,orb)
+  KM.set_hop(t1,0,1,[0,0]) 
+  KM.set_hop(t1,1,0,[0,1])
+  KM.set_hop(t1,1,0,[1,0])
+  KM.set_hop(t1,2,3,[0,0]) 
+  KM.set_hop(t1,3,2,[0,1])
+  KM.set_hop(t1,3,2,[1,0])
+#  # Second neighbours spin up
+  KM.set_hop(t2+1j*λI,0,0,[1,0])
+  KM.set_hop(t2+1j*λI,1,1,[1,-1])
+  KM.set_hop(t2+1j*λI,1,1,[0,1])
+  KM.set_hop(t2+1j*λI,1,1,[-1,0])
+  KM.set_hop(t2+1j*λI,0,0,[-1,1])
+  KM.set_hop(t2+1j*λI,0,0,[0,-1])
+  # Second neighbours spin down
+  KM.set_hop(t2-1j*λI,2,2,[1,0])
+  KM.set_hop(t2-1j*λI,3,3,[1,-1])
+  KM.set_hop(t2-1j*λI,3,3,[0,1])
+  KM.set_hop(t2-1j*λI,3,3,[-1,0])
+  KM.set_hop(t2-1j*λI,2,2,[-1,1])
+  KM.set_hop(t2-1j*λI,2,2,[0,-1])
+  # Rashba effect 
+  # Same x and y axis for spin 
+  KM.set_hop(-1j*λR,0,3,[0,0])
+  KM.set_hop(1j*(-0.5+sqrt(3)*0.5j)*λR,0,3,[0,1])
+  KM.set_hop(1j*(-0.5-sqrt(3)*0.5j)*λR,0,3,[1,0])
+  KM.set_hop(-1j*λR,1,2,[0,0])
+  KM.set_hop(1j*(-0.5+sqrt(3)*0.5j)*λR,1,2,[0,1])
+  KM.set_hop(1j*(-0.5-sqrt(3)*0.5j)*λR,1,2,[1,0])
+
+  KM.set_onsite([M,-M,M,-M])
+
+  return KM
+
+KaneMele().visualize(0,1)
+plt.show()
+```
+
+## Estructura de bandas
+
+```{python}
+
+kpath = [[0,0],[2/3,1/3],[1/2,1/2],[1/3,2/3],[0,0]] # Gamma, K, M, K', Gamma
+
+λSO = 0.03
+M   = 0.3
+λR  = 0.0
+
+def Gaps(model):
+  K_array=wf_array(model,[50,50])
+  gaps = K_array.solve_on_grid([0.,0.])
+  return gaps
+
+tb = KaneMele(λI=λSO,M=M,λR=λR)
+k_vec,k_dist,k_node = tb.k_path(kpath,501,report=False)
+Ek,evec = tb.solve_all(k_vec,eig_vectors=True)
+G = Gaps(tb)
+
+sz = diag([1,1,-1,-1])
+Sz = [ [ real(vdot(ev,dot(sz,ev))) for ev in evec[band]] for band in range(len(Ek)) ]
+
+for i in range(len(Ek)):
+  scatter(k_dist,Ek[i],s=1,c=Sz[i],cmap='coolwarm', vmin=-1.1, vmax=1.1) 
+plt.title(r"Sin el parámetro Rashba")
+xticks(k_node,[r"$\Gamma$",r"K",r"M",r"K'",r"$\Gamma$"])
+grid(True)
+colorbar(label=r'Valor medio de $S_z$, $\langle S_z \rangle$')
+plt.show()
+
+```
+
+
+```{python}
+
+
+kpath = [[0,0],[2/3,1/3],[1/2,1/2],[1/3,2/3],[0,0]] # Gamma, K, M, K', Gamma
+λSO = 0.03
+M   = 0.3
+λR  = 0.02
+
+def Gaps(model):
+  K_array=wf_array(model,[50,50])
+  gaps = K_array.solve_on_grid([0.,0.])
+  return gaps
+
+tb = KaneMele(λI=λSO,M=M,λR=λR)
+k_vec,k_dist,k_node = tb.k_path(kpath,501,report=False)
+Ek,evec = tb.solve_all(k_vec,eig_vectors=True)
+G = Gaps(tb)
+
+sz = diag([1,1,-1,-1])
+Sz = [ [ real(vdot(ev,dot(sz,ev))) for ev in evec[band]] for band in range(len(Ek)) ]
+
+for i in range(len(Ek)):
+  scatter(k_dist,Ek[i],s=1,c=Sz[i],cmap='coolwarm', vmin=-1.1, vmax=1.1) 
+plt.title(r"Efecto del parámetro Rashba")
+xticks(k_node,[r"$\Gamma$",r"K",r"M",r"K'",r"$\Gamma$"])
+grid(True)
+colorbar(label=r'Valor medio de $S_z$, $\langle S_z \rangle$')
+plt.show()
+
+```
+
+
+```{python}
+
+
+fig,ax=plt.subplots(1,2,figsize=(6,3))
+L=10
+λSO=0.03 
+λR=0.02
+k = linspace(0.,1.,301)
+
+M=0.1
+KM_RibbonZZ=KaneMele(λI=λSO,M=M,λR=λR).cut_piece(L,0)
+Ek,evec = KM_RibbonZZ.solve_all(k,eig_vectors=True)
+sz = diag(L*[1,1,-1,-1])
+Sz = [ [ real(vdot(ev,dot(sz,ev))) for ev in evec[band]] for band in range(len(Ek)) ]
+for i in range(len(Ek)):
+  sc=ax[0].scatter(k,Ek[i],s=1,c=Sz[i],cmap='coolwarm', vmin=-1.1, vmax=1.1) 
+ax[0].set_title("Fase QSH")
+ax[0].set_ylim(-1,1)
+ax[0].grid(True)
+
+M=0.4
+KM_RibbonZZ=KaneMele(λI=λSO,M=M,λR=λR).cut_piece(L,0)
+Ek,evec = KM_RibbonZZ.solve_all(k,eig_vectors=True)
+sz = diag(L*[1,1,-1,-1])
+Sz = [ [ real(vdot(ev,dot(sz,ev))) for ev in evec[band]] for band in range(len(Ek)) ]
+for i in range(len(Ek)):
+  sc=ax[1].scatter(k,Ek[i],s=1,c=Sz[i],cmap='coolwarm', vmin=-1.1, vmax=1.1) 
+ax[1].set_title("Fase aislante")
+ax[1].set_ylim(-1,1)
+ax[1].grid(True)
+
+fig.colorbar(sc,label=r'$\langle S_z \rangle$')
+plt.show()
+
+```
+
+## Invariante topológico
+
+\begin{align}
+P(\vec{k}) = {\rm Pf} [ \langle u_i(\vec{k}) | \Theta | u_j(\vec{k}) \rangle]
+\end{align}
+
+donde ${\rm Pf}$ es el Pfaffiano de una matriz antisimétrica, el cual cumple que
+
+\begin{align}
+{\rm Pf}^2(A) = {\rm det}(A)\,,
+\end{align}
+
+y $\Theta={\rm i}(I\otimes s_y)$ es el operador de reversión temporal.
+
+El número de pares de ceros es el invariante topológico $\mathbb{Z}_2$.
+
+```{python}
+
+#| label: fig-KaneMele-Z2
+#| fig-cap: "Invariante Z2. El número de pares de ceros es el invariante topológico Z2."
+
+def Pfaffian(model,k_vec):
+  Pf=[]
+  for k in k_vec:
+    Ek,evec = model.solve_one(k,eig_vectors=True)
+    nF = model._norb//2
+    σy=np.array([[0,-1j],[1j,0]])
+    sy = kron(σy,diag(nF*[1]))
+    T = np.array( [[ vdot(ev1,dot(-1j*sy,conj(ev2)) )  for ev1 in evec[Ek<0]] for ev2 in evec[Ek<0]] )
+    Pf.append(sqrt(det(T)))
+  Pf=np.array(Pf)
+  return Pf
+
+def Pffafian_one(model):
+  def Pf(k):
+    Ek,evec = model.solve_one(k,eig_vectors=True)
+    nF = model._norb//2
+    σy=np.array([[0,-1j],[1j,0]])
+    sy = kron(σy,diag(nF*[1]))
+    T = np.array( [[ vdot(ev1,dot(-1j*sy,conj(ev2)) )  for ev1 in evec[Ek<0]] for ev2 in evec[Ek<0]] )
+    return sqrt(det(T))
+  return Pf
+
+kpts = [[0,0],[2/3,1/3],[1/2,1/2],[1/3,2/3],[0,0]]
+λSO= 0.03
+M=0.1
+λR=0.01 #0.1476
+
+def Z2_inv(model,k_vec):
+  Z2=0
+  P = Pffafian_one(model)
+  for k in k_vec:
+    if abs(P(k))<10e-15:
+      Z2+=1
+  return Z2
+
+tb=KaneMele(λI=λSO,M=M,λR=λR)
+k_vec,k_dist,k_node = tb.k_path(kpts,nk=501,report=False)
+z2=Z2_inv(tb,k_vec)
+Pf=Pfaffian(tb,k_vec)
+title(r"$\mathbb{Z}_2$ invariant "+f"= {z2:.0f}")
+plot(k_dist,abs(Pf),c='k')
+xticks(k_node,[r"$\Gamma$",r"K",r"M",r"K'",r"$\Gamma$"])
+plt.show()
+```

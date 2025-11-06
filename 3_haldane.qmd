@@ -162,27 +162,43 @@ fig.show()
 
 ## Curvatura de Berry
 
+\begin{align}
+F_{n,m} = -{\rm arg}\big\{  {\rm exp}\big[-{\rm i} \big( &\phi_{(n,m),(n+1,m)} \\+ &\phi_{(n+1,m),(n+1,m+1)} \\
++ &\phi_{(n+1,m+1),(n,m+1)} \\
++ &\phi_{(n,m+1),(n,m)} \big) \big] \big\}
+\end{align}
+
+\begin{align}
+F_{n,m} = -{\rm arg}\big\{  {\rm exp}\big[-{\rm i} \big( &\langle u_{n,m} |u_{n+1,m}\rangle \\
++ &\langle u_{n+1,m} |u_{n+1,m+1}\rangle \\
++ &\langle u_{n+1,m+1} |u_{n,m+1}\rangle\\
++ &\langle u_{n,m+1} |u_{n,m}\rangle \big) \big] \big\}
+\end{align}
+
+
+
+
 ```{python}
 
-U0 = U[0].reshape(nkp,nkp,2)
-U1 = U[1].reshape(nkp,nkp,2)
+u0 = U[0].reshape(nkp,nkp,2)
+u1 = U[1].reshape(nkp,nkp,2)
 
 F = zeros((nkp-1,nkp-1),dtype="complex")
 for n in range(nkp-1):
   for m in range(nkp-1):
-    F[n,m] = vdot(U0[n+0,m+0],U0[n+1,m+0]) \
-            *vdot(U0[n+1,m+0],U0[n+1,m+1]) \
-            *vdot(U0[n+1,m+1],U0[n+0,m+1]) \
-            *vdot(U0[n+0,m+1],U0[n+0,m+0])
+    F[n,m] = vdot(u0[n+0,m+0],u0[n+1,m+0]) \
+            *vdot(u0[n+1,m+0],u0[n+1,m+1]) \
+            *vdot(u0[n+1,m+1],u0[n+0,m+1]) \
+            *vdot(u0[n+0,m+1],u0[n+0,m+0])
 
 
 G = zeros((nkp-1,nkp-1),dtype="complex")
 for n in range(nkp-1):
   for m in range(nkp-1):
-    G[n,m] = vdot(U1[n+0,m+0],U1[n+1,m+0]) \
-            *vdot(U1[n+1,m+0],U1[n+1,m+1]) \
-            *vdot(U1[n+1,m+1],U1[n+0,m+1]) \
-            *vdot(U1[n+0,m+1],U1[n+0,m+0])
+    G[n,m] = vdot(u1[n+0,m+0],u1[n+1,m+0]) \
+            *vdot(u1[n+1,m+0],u1[n+1,m+1]) \
+            *vdot(u1[n+1,m+1],u1[n+0,m+1]) \
+            *vdot(u1[n+0,m+1],u1[n+0,m+0])
 
 ```
 
