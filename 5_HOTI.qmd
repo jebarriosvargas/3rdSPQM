@@ -46,7 +46,8 @@ HOTI_square   = HOTI_slab.cut_piece(Ny,1,glue_edgs=False)
 ```{python}
 
 hlines(evals,xmin=0.1,xmax=0.2)
-
+ylabel("E")
+xticks([])
 ```
 
 ### Estados localizados en las esquinas

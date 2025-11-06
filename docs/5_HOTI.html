@@ -366,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text">Referencias</span></a>
   </div>
 </li>
     </ul>
@@ -417,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Modelo HOTI</figcaption>
 </figure>
 </div>
-<div id="80c531b5" class="cell" data-execution_count="1">
+<div id="c96a81fd" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
@@ -447,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="modelo-finito" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="modelo-finito"><span class="header-section-number">6.1</span> Modelo finito</h2>
-<div id="b9cd6d75" class="cell" data-execution_count="2">
+<div id="8eec1cc2" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>Nx,Ny <span class="op">=</span> <span class="dv">4</span>,<span class="dv">4</span></span>
@@ -458,15 +458,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="espectro" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="espectro"><span class="header-section-number">6.1.1</span> Espectro</h3>
-<div id="c7c0a0eb" class="cell" data-execution_count="3">
+<div id="ebf5a4c9" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Mostrar código</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>hlines(evals,xmin<span class="op">=</span><span class="fl">0.1</span>,xmax<span class="op">=</span><span class="fl">0.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>hlines(evals,xmin<span class="op">=</span><span class="fl">0.1</span>,xmax<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>ylabel(<span class="st">"E"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>xticks([])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="5_HOTI_files/figure-html/cell-4-output-1.png" width="241" height="226" class="figure-img"></p>
+<p><img src="5_HOTI_files/figure-html/cell-4-output-1.png" width="253" height="204" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -474,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="estados-localizados-en-las-esquinas" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="estados-localizados-en-las-esquinas"><span class="header-section-number">6.1.2</span> Estados localizados en las esquinas</h3>
-<div id="3cf66968" class="cell" data-execution_count="4">
+<div id="d95707af" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> local_DOS_one_eigen(Ek,U,n):</span>
@@ -482,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3"></a>    <span class="cf">return</span> real(S)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="5a49e553" class="cell" data-execution_count="5">
+<div id="00f5c5ef" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>ed<span class="op">=</span>HOTI_square.get_num_orbitals()<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">2</span></span>
@@ -500,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="c8f65fa9" class="cell" data-execution_count="6">
+<div id="d7496df3" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>ed<span class="op">=</span>HOTI_square.get_num_orbitals()<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span></span>
@@ -518,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="793b0268" class="cell" data-execution_count="7">
+<div id="a7ee9c31" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>ed<span class="op">=</span>HOTI_square.get_num_orbitals()<span class="op">//</span><span class="dv">2</span></span>
@@ -536,7 +538,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="9022ab8c" class="cell" data-execution_count="8">
+<div id="eb3b05c4" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Mostrar código</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>ed<span class="op">=</span>HOTI_square.get_num_orbitals()<span class="op">//</span><span class="dv">2</span><span class="op">+</span><span class="dv">1</span></span>
